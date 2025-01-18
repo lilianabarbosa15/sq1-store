@@ -1,1 +1,1 @@
-<x-svg-shopping-cart class="size-6 text-black hover:text-primary" />
+<x-svg-shopping-cart class="size-6 text-gray-900 hover:text-primary" />

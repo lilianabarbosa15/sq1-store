@@ -16,8 +16,8 @@
                     wire:key="category-{{$category->slug}}"
                 @class([
                     'btn btn-filled capitalize',
-                    'btn-gray hover:border-primary hover:!bg-primary/5 hover:!text-primary' => $selectedCategory->id !== $category->id,
-                    'btn-primary shadow-xl shadow-primary/20' => $selectedCategory->id === $category->id,
+                    'btn-gray hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600' => $selectedCategory->id !== $category->id,
+                    'btn-primary shadow-xl shadow-primary-600/20' => $selectedCategory->id === $category->id,
                 ])
             >
                 {{ $category->name }}

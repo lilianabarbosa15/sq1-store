@@ -14,7 +14,7 @@
             </x-marquee>
         </div>
 
-        <div class="bg-neutral-50 py-20 box-border">
+        <div class="bg-neutral-950 py-20 box-border">
             <livewire:recommended-products-section/>
         </div>
     </main>

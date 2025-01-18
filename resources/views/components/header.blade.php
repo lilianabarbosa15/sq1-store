@@ -18,10 +18,10 @@
             </div>
         </div>
     </div>
-    <nav class="bg-neutral-100 w-full py-2 box-border border-y hidden md:block">
+    <nav class="bg-neutral-50 w-full py-2 box-border border-y border-gray-200 hidden md:block">
         <div class="wrapper max-w-4xl flex justify-around items-center gap-4">
             @foreach(config('navigation') as $item)
-                <a href="" class="uppercase font-bold text-sm text-black hover:text-primary">
+                <a href="" class="uppercase font-bold text-sm text-gray-900 hover:text-primary-600">
                     {{$item['title']}}
                 </a>
             @endforeach
@@ -44,7 +44,7 @@
                 <div class="px-4 pt-5 pb-4 flex-1">
                     <nav class="flex flex-col">
                         @foreach(config('navigation') as $item)
-                            <a href="" class="uppercase font-bold text-sm text-black hover:text-primary border-b px-6 py-4 hover:bg-neutral-100">
+                            <a href="" class="uppercase font-bold text-sm text-black hover:text-primary-600 border-b px-6 py-4 hover:bg-neutral-100">
                                 {{$item['title']}}
                             </a>
                         @endforeach
