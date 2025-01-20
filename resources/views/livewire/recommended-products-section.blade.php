@@ -1,48 +1,41 @@
-<div class="wrapper space-y-10">
-    <div class="space-y-2">
-        <h2 class="text-black font-black text-5xl text-center">
-            {{__('New arrivals')}}
+<div class="wrapper space-y-10">    <!-- relative flex-wrap box-border mb-[20px]-->
+    <div class="space-y-8">
+        <h2 class="text-gray-900 font-roboto font-bold text-[clamp(40px,12.5vw,46px)] text-center">
+            {{__('New Arrivals')}}
         </h2>
 
-        <p class="text-pretty text-black text-center sm:max-w-lg mx-auto">
+        <p class="text-neutral-600 font-poppins font-normal text-center sm:max-w-[520px] mx-auto">
             {{__('Discover our exciting new arrivals, featuring the latest trends and styles to refresh your wardrobe this season.')}}
         </p>
     </div>
 
-    <div class="hidden min-[930px]:flex justify-center items-center gap-6 lg:gap-10 transition-all">
+    <div class="no-visibility-scrollbar min-[768px]:flex justify-center items-center gap-[clamp(16px,0.1vw,24px)] lg:gap-10 transition-all
+     w-full whitespace-nowrap flex max-[768px]:overflow-x-auto flex-nowrap max-[768px]:justify-between">
+        <!--
+        {{ $categories }} comes from the HomeController, but $selectedCategory comes from the RecommendedProductsSection.  
+        Therefore, the categories are determined by the RecommendedProductsSection.
+        -->
         @foreach($categories as $category)
             <button type="button"
                     wire:click="selectCategory('{{$category->slug}}')"
                     wire:key="category-{{$category->slug}}"
                 @class([
-                    'btn btn-filled capitalize',
+                    'btn btn-filled capitalize text-[clamp(13px,1.7vw,16px)]',
                     'btn-gray hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600' => $selectedCategory->id !== $category->id,
-                    'btn-primary shadow-xl shadow-primary-600/20' => $selectedCategory->id === $category->id,
+                    'btn-primary shadow-xl shadow-black/15' => $selectedCategory->id === $category->id,
                 ])
             >
                 {{ $category->name }}
             </button>
         @endforeach
     </div>
-
-    <div class="min-[930px]:hidden">
-        <form class="w-full">
-            <div class="w-full">
-                <x-form.input-label for="filter-products">{{__('Filter by')}}</x-form.input-label>
-                <x-form.select class="w-full" id="filter-products" name="filter-products">
-                    <option value="">{{__('Men\'s Fashion')}}</option>
-                    <option value="">{{__('Women\'s Fashion')}}</option>
-                    <option value="">{{__('Men\'s Accessories')}}</option>
-                    <option value="">{{__('Women\'s Accessories')}}</option>
-                    <option value="">{{__('Discounts deals')}}</option>
-                </x-form.select>
-            </div>
-        </form>
-    </div>
-
+    
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
-        @foreach($selectedCategory->products->take(4) as $product)
+        @foreach($selectedCategory->products->take(8) as $product)
             <x-product-card :product="$product"/>
         @endforeach
     </div>
+
+    <!--     -->
+    
 </div>

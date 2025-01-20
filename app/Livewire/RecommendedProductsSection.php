@@ -15,10 +15,10 @@ class RecommendedProductsSection extends Component
 
     public function mount():void
     {
-        $firstsCategories = Category::where('slug', '!=', 'discounts')->take(4)->get();
-        $discountCategory = Category::where('slug', 'discounts')->first();
+        $firstsCategories = Category::where('slug', '!=', 'discount-deals')->take(4)->get();
+        $discountCategory = Category::where('slug', 'discount-deals')->first();
         $this->categories = $firstsCategories->merge([$discountCategory]);
-        $this->selectedCategory = $firstsCategories->first();
+        $this->selectedCategory = $firstsCategories->skip(1)->first(); //second element of $firstsCategories
     }
 
     public function selectCategory(string $categorySlug)

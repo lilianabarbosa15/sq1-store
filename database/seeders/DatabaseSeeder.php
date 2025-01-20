@@ -29,12 +29,22 @@ class DatabaseSeeder extends Seeder
         }
 
         $categoryNames = [
-            "men's clothing",
-            "women's clothing",
-            "watches",
-            "jewelry",
-            "electronics",
-            'discounts'
+            "men's fashion",
+            "women's fashion",
+            "women's accessories",
+            "men's accessories",
+            "discount deals",
+            "fashion",
+            "hats",
+            "sandal",
+            "belt",
+            "bags",
+            "snacker",
+            "denim",
+            "minimog",
+            "vagabond",
+            "sunglasses",
+            "beachwear"
         ];
 
         foreach ($categoryNames as $categoryName) {

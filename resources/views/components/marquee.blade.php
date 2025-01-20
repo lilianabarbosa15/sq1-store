@@ -13,17 +13,19 @@
       });
     }
   }"
-    {{$attributes->merge(['class' => 'relative overflow-hidden bg-white py-10'])}}
+    {{$attributes->merge(['class' => 'relative overflow-hidden bg-white py-0'])}}
 >
     <!-- Marquee overlay gradients -->
     <div
         class="absolute inset-y-0 start-0 z-10 w-32 bg-gradient-to-r from-white to-transparent rtl:bg-gradient-to-l"
         aria-hidden="true"
     ></div>
+    <!--
     <div
         class="absolute inset-y-0 end-0 z-10 w-32 bg-gradient-to-l from-white to-transparent rtl:bg-gradient-to-r"
         aria-hidden="true"
     ></div>
+    -->
     <!-- END Marquee overlay gradients -->
 
     <!-- Marquee Track -->
@@ -35,7 +37,7 @@
         <!-- Marquee list -->
         <div
             x-ref="marqueeList"
-            class="flex w-full flex-shrink-0 flex-nowrap items-center justify-around gap-10 px-5"
+            class="flex w-[150%] flex-shrink-0 flex-nowrap items-center justify-around"
         >
             <!-- Marquee Items -->
             <!--

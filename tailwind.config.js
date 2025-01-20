@@ -12,7 +12,6 @@ export default {
     theme: {
         extend: {
             colors: {
-                black: '#16a34a', //'#000000',-----------
                 orange: {
                     400: '#A86A3D',
                 },
@@ -38,7 +37,9 @@ export default {
                 },
             },
             screens: {
-                'xs': '375px'
+                'xs': '375px',
+                'sm': '640px',
+                'md': '768px',
             },
             keyframes: {
                 "full-tl": {
@@ -54,8 +55,12 @@ export default {
                 "full-tl": "full-tl 25s linear infinite",
                 "full-tr": "full-tr 25s linear infinite",
             },
+            fontFamily: {
+                roboto: ['Roboto', 'sans-serif'],
+                poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+            },
         },
     },
 
-    plugins: [forms],
+    plugins: [ forms ],
 };

@@ -10,8 +10,8 @@ class HomeController extends Controller
 {
     public function __invoke():View
     {
-        $firstsCategories = Category::where('name', '!=', 'discounts')->take(4)->get();
-        $discountCategory = Category::where('name', 'discounts')->first();
+        $firstsCategories = Category::where('slug', '!=', 'discount-deals')->take(15)->get();
+        $discountCategory = Category::where('slug', 'discount-deals')->first();
 
         $categories = collect($firstsCategories)->merge([$discountCategory]);
 
