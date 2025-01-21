@@ -41,7 +41,6 @@
     }
     
     .btn.btn-outlined:hover {
-        @apply scale-110;
         border-color: var(--btn-outlined-on);
         color: var(--btn-outlined-on);
     }

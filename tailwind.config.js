@@ -57,7 +57,7 @@ export default {
                 "full-tr": "full-tr 25s linear infinite",
             },
             fontFamily: {
-                roboto: ['Roboto', 'sans-serif'],
+                roboto: ['Roboto', 'sans-serif'],   //'sans': ['Roboto', 'sans-serif'], //
                 poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
         },
