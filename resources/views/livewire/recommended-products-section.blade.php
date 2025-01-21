@@ -30,12 +30,24 @@
         @endforeach
     </div>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
-        @foreach($selectedCategory->products->take(8) as $product)
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-[clamp(16px,1vw,32px)] justify-items-center">
+        @foreach($selectedCategory->products->take($productsToShow) as $product)
             <x-product-card :product="$product"/>
         @endforeach
     </div>
 
-    <!--     -->
-    
+    <div class="flex justify-center font-poppins font-normal">
+        @if ($selectedCategory->products->count() > $productsToShow)
+            <button type="button"
+                    wire:click="loadMore"
+            @class([
+                'btn btn-filled capitalize text-4 py-4 px-[100px] lg:px-[70px]',
+                'btn-primary shadow-xl shadow-black/15',
+            ])
+            >
+                {{__('view more')}}
+            </button>
+        @endif
+    </div>
+
 </div>

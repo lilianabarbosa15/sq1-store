@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
 
         $categories = Category::all()->pluck('id')->toArray();
 
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 20) as $index) {
             $name = $fakerStore->name();
             try {
                 $product = Product::factory()->create([
@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
         return $colors;
     }
 
-    function getRandomImages($name, $min = 1, $max = 10):array {
+    function getRandomImages($name, $min = 1, $max = 20):array {
         $count = rand($min, $max);
         $images = [];
 

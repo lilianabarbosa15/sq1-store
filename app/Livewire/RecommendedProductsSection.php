@@ -13,6 +13,8 @@ class RecommendedProductsSection extends Component
     public Collection $categories;
     public Category $selectedCategory;
 
+    public $productsToShow = 8;
+
     public function mount():void
     {
         $firstsCategories = Category::where('slug', '!=', 'discount-deals')->take(4)->get();
@@ -24,6 +26,12 @@ class RecommendedProductsSection extends Component
     public function selectCategory(string $categorySlug)
     {
         $this->selectedCategory = $this->categories->firstWhere('slug', $categorySlug);
+        $this->productsToShow = 8;
+    }
+
+    public function loadMore()
+    {
+        $this->productsToShow += 8; // Increase the limit of products to display
     }
 
     public function render():View

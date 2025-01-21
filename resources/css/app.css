@@ -6,6 +6,11 @@
     display: none !important;
 }
 
+:root {
+    --btn-outlined-off: #323232;
+    --btn-outlined-on: #A86A3D;
+}
+
 @layer utilities {
     .no-visibility-scrollbar::-webkit-scrollbar {  /*recommended-products-section*/
         width: 1px;
@@ -28,6 +33,17 @@
 
     .btn {
         @apply py-3 px-[clamp(16px,1.8vw,32px)] box-border rounded-lg;
+    }
+
+    .btn.btn-outlined {
+        @apply bg-transparent rounded-md text-[var(--btn-outlined-off)] border transition-all duration-150;
+        border-color: var(--btn-outlined-off);
+    }
+    
+    .btn.btn-outlined:hover {
+        @apply scale-110;
+        border-color: var(--btn-outlined-on);
+        color: var(--btn-outlined-on);
     }
 
     .btn.btn-outlined.btn-primary {

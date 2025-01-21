@@ -17,6 +17,7 @@ export default {
                 },
                 blue: {
                     50: '#DEDFE1',
+                    100: '#DBD0CC',
                     500: '#1456FF',
                     950: '#323334',
                 },
@@ -38,7 +39,7 @@ export default {
             },
             screens: {
                 'xs': '375px',
-                'sm': '640px',
+                'sm': '500px',
                 'md': '768px',
             },
             keyframes: {

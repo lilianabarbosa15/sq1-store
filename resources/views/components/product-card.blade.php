@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'bg-white border rounded-[10px] p-4 py-5 box-border hover:shadow transition flex flex-col max-w-[290px]']) }}>
+<div {{ $attributes->merge(['class' => 'bg-white border rounded-[10px] p-4 py-5 box-border hover:shadow transition flex flex-col max-w-[340px] lg:max-w-[290px]']) }}>
     <a href="" class="w-full aspect-square bg-neutral-50 block rounded-md">
     <img src="{{ $product->images[0] }}" alt="{{ $product->name }}" class="w-full h-auto aspect-square object-contain rounded-md">
     </a>

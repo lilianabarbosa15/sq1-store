@@ -1,12 +1,15 @@
 <x-guest-layout>
     <main class="flex-1">
+        <div class="py-10 bg-blue-100/80">
+            <livewire:hero-section/>
+        </div>
+        
         <div class="py-[clamp(30px,5vw,82px)] box-border">
             <div class="wrapper hidden bg-white lg:flex justify-center items-center gap-[clamp(28px,4vw,68px)]"> 
                 @foreach(collect(File::allFiles('images/brands'))->shuffle() as $image)
                     <img src="{{ $image }}" alt="" class="w-full h-auto max-w-[clamp(160px,10.5vw,196px)]">
                 @endforeach
             </div>
-
 
             <x-marquee class="lg:hidden ">
                 @foreach(collect(File::allFiles('images/brands')) as $image)
