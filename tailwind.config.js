@@ -39,6 +39,7 @@ export default {
             },
             screens: {
                 'xs': '375px',
+                '2xs': '427px',
                 'sm': '500px',
                 'md': '768px',
             },
