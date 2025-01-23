@@ -17,9 +17,10 @@
 
 </head>
 <body class="min-h-screen min-w-full bg-white font-sans antialiased flex flex-col">
-    <x-header/>
+    @props(['navBackground' => 'bg-neutral-50'])
+    <x-header :navBackground="$navBackground" />
     {{ $slot }}
-    <x-footer/>
+    
     <aside id="aside-modal"></aside>
     @livewireScripts
 </body>

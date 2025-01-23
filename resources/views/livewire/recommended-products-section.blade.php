@@ -1,4 +1,4 @@
-<div class="wrapper space-y-10">    <!-- relative flex-wrap box-border mb-[20px]-->
+<div class="wrapper space-y-10">
     <div class="space-y-8">
         <h2 class="text-gray-900 font-roboto font-bold text-[clamp(40px,12.5vw,46px)] text-center">
             {{__('New Arrivals')}}
@@ -9,6 +9,7 @@
         </p>
     </div>
 
+    <!-- Categories -->
     <div class="no-visibility-scrollbar min-[768px]:flex justify-center items-center gap-[clamp(16px,0.1vw,24px)] lg:gap-10 transition-all
      w-full whitespace-nowrap flex max-[768px]:overflow-x-auto flex-nowrap max-[768px]:justify-between">
         <!--
@@ -20,7 +21,7 @@
                     wire:click="selectCategory('{{$category->slug}}')"
                     wire:key="category-{{$category->slug}}"
                 @class([
-                    'btn btn-filled capitalize text-[clamp(13px,1.7vw,16px)]',
+                    'btn btn-filled capitalize text-[clamp(14px,1.7vw,16px)]',
                     'btn-gray hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600' => $selectedCategory->id !== $category->id,
                     'btn-primary shadow-xl shadow-black/15' => $selectedCategory->id === $category->id,
                 ])
@@ -30,12 +31,14 @@
         @endforeach
     </div>
     
+    <!-- Products -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-[clamp(16px,1vw,32px)] justify-items-center">
         @foreach($selectedCategory->products->take($productsToShow) as $product)
             <x-product-card :product="$product"/>
         @endforeach
     </div>
 
+    <!-- Load More -->
     <div class="flex justify-center font-poppins font-normal">
         @if ($selectedCategory->products->count() > $productsToShow)
             <button type="button"

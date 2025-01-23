@@ -1,17 +1,8 @@
 <div class="wrapper grid grid-cols-1 sm:grid-cols-2">
     <div class="m-auto">
-        @php
-            $image = collect(File::allFiles('images/marketing'))->first(function ($file) {
-                return $file->getFilename() === 'supermodel1.png';
-            });
-        @endphp
-
-        @if($image)
-            <img src="{{ $image }}" alt="Selected Image" class="w-[clamp(160px,20vw,308px)] h-auto">
-        @else
-            <p>{{ __('Image not found') }}</p>
-        @endif
-        
+        <img src="{{ asset('images/marketing/supermodel1.png') }}" 
+            alt="Model posing confidently in a modern outfit" 
+            class="w-[clamp(160px,20vw,308px)] h-auto">
     </div>
     <div class="space-y-2 max-w-lg my-auto">
         <p class="font-roboto font-normal text-[clamp(16px,1.7vw,22px)] text-blue-950">

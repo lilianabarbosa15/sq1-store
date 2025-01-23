@@ -1,4 +1,4 @@
-<div class="relative z-1 wrapper sm:space-y-3 flex-1 flex-col justify-center items-center text-center text-white font-poppins max-w-[600px]"
+<div class="relative z-1 wrapper sm:space-y-3 flex flex-col justify-center items-center text-center text-white font-poppins max-w-[600px]"
     style="text-shadow: 0px 5px 5px #00000033;"
 >
     <p class="font-semibold text-[clamp(16px,6vw,24px)]">
@@ -12,7 +12,7 @@
             pellentesque, varius elit quis, malesuada quam.')}}
     </p>
     <div class="pt-5">
-        <button class="btn btn-filled btn-primary capitalize text-4 py-[clamp(8px,2.5vw,16px)] px-[40px] shadow-xl shadow-black/30">
+        <button class="btn btn-filled btn-primary capitalize text-4 py-[clamp(8px,2.5vw,16px)] px-10 shadow-xl shadow-black/30">
             {{__('shop now')}}
         </button>
     </div>

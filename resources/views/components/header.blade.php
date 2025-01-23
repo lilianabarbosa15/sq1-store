@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <nav class="bg-neutral-50 w-full py-3.5 box-border border-y border-gray-200 hidden md:block">
+    <nav class="{{ $navBackground }} w-full py-3.5 box-border border-y border-gray-200 hidden md:block">
         <div class="wrapper max-w-4xl flex justify-around items-center gap-4">
             @foreach(config('navigation') as $item)
                 <a href="" class="uppercase font-bold text-sm text-gray-900 hover:text-primary-600">

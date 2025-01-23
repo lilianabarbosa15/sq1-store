@@ -1,9 +1,9 @@
-<x-guest-layout>
+<x-guest-layout :navBackground="'bg-neutral-50'">
     <main class="flex-1">
         <!-- Hero Section -->
-        <div class="py-10 sm:py-20 bg-blue-100/80">
+        <section class="py-10 sm:py-20 bg-blue-100/80">
             <livewire:hero-section/>
-        </div>
+        </section>
         
         <!-- Asociated brands Section -->
         <div class="py-[clamp(30px,5vw,82px)] box-border">
@@ -21,25 +21,21 @@
         </div>
 
         <!-- Recommeded products Section -->
-        <div class="pb-20 border-t-[40px] bg-neutral-300 min-[761px]:bg-white"
+        <section class="pb-20 border-t-[40px] bg-neutral-300 min-[761px]:bg-white"
              style="border-image: linear-gradient(180deg, #F9F9F9, #FFFFFF, #FFFFFF); border-image-slice: 380; box-sizing: border-box; flex-wrap: wrap;"
         >
             <livewire:recommended-products-section/>
-        </div>
+        </section>
 
         <!-- Promotional Section -->
-        @php
-            $imagePath = base_path('public/images/marketing/background-banner.jpg');
-            $backgroundImage = file_exists($imagePath) ? asset('images/marketing/background-banner.jpg') : null;
-        @endphp
         <div class="relative z-1 py-8 sm:py-20" 
         >
+            @php
+                $background = asset('images/marketing/background-banner.jpg');
+            @endphp
             <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat bg-slate-700"
-                @if ($backgroundImage)
-                    style="background-image: url('{{ $backgroundImage }}');
-                        filter: blur(2px) contrast(0.9) brightness(0.6);"
-                @endif
-            > </div>
+                    style="background-image: url('{{ $background }}'); 
+                            filter: blur(2px) contrast(0.9) brightness(0.6);" > </div>
             <livewire:promotional-section/>
         </div>
 
@@ -71,4 +67,5 @@
         </aside>
 
     </main>
+    <x-footer/>
 </x-guest-layout>
