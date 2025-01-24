@@ -6,11 +6,6 @@
     display: none !important;
 }
 
-:root {
-    --btn-outlined-off: #323232;
-    --btn-outlined-on: #A86A3D;
-}
-
 @layer utilities {
     .no-visibility-scrollbar::-webkit-scrollbar {  /*recommended-products-section*/
         width: 1px;
@@ -24,6 +19,10 @@
         -webkit-box-shadow: 0 0 0px 1000px #f3f4f6 inset;       /*bg-neutral-100*/
         box-shadow: 0 0 0px 1000px #f3f4f6 inset !important;    /*bg-neutral-100*/
     }
+
+    .shadow-inset-white {
+        box-shadow: inset 0 0 0 3px white;
+    }
 }
 
 @layer components {
@@ -34,20 +33,34 @@
     .btn {
         @apply py-3 px-[clamp(16px,1.8vw,32px)] box-border rounded-lg;
     }
-
-    .btn.btn-outlined {
-        @apply bg-transparent rounded-md text-[var(--btn-outlined-off)] border transition-all duration-150;
-        border-color: var(--btn-outlined-off);
-    }
     
-    .btn.btn-outlined:hover {
-        border-color: var(--btn-outlined-on);
-        color: var(--btn-outlined-on);
+    .btn-stepper {
+        @apply flex flex-row justify-between items-center text-base font-normal box-border rounded-lg border;
     }
 
     .btn.btn-outlined.btn-primary {
         @apply bg-white text-primary-600 border border-primary-600 hover:bg-primary-600/5 transition-all duration-100;
     }
+
+    .btn.btn-outlined.btn-gray {
+        @apply bg-transparent rounded-md text-[#323232] border border-[#323232] hover:border-[#A86A3D] hover:text-[#A86A3D] transition-all duration-150;
+    }
+
+    .btn.btn-outlined.btn-black {
+        @apply text-black border border-black hover:bg-black hover:text-white transition-all duration-100;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     .btn.btn-filled.btn-gray {
         @apply bg-neutral-50 text-gray-400; /*hover:text-neutral-700 border transition-all hover:shadow hover:bg-neutral-200*/

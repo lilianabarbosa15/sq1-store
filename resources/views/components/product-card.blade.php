@@ -5,7 +5,7 @@
     </a>
 
     <!-- Product Details -->
-    <a href="" class="block mt-2 flex-1 font-poppins font-medium">
+    <a href="" class="block mt-2 flex-1 font-medium">
         <h3 class="text-gray-900 text-lg sm:text-xl first-letter:uppercase">
             {{ $product->name }}
         </h3>
@@ -41,7 +41,7 @@
 
     <!-- Buy Button -->
     <form action="{{ route('show', ['id' => $product->id]) }}" method="GET">
-        <button class="btn btn-outlined btn-primary w-full mt-4 py-2 font-poppins rounded-[10px]"
+        <button class="btn btn-outlined btn-primary w-full mt-4 py-2 rounded-[10px]"
                 type="submit">
             {{ __('Comprar') }}
         </button>

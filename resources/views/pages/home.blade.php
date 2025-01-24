@@ -40,7 +40,7 @@
         </div>
 
         <!-- Additional information -->
-        <aside class="wrapper py-10 grid gap-3 font-poppins 
+        <aside class="wrapper py-10 grid gap-3
              grid-cols-2 grid-flow-row  lg:grid-cols-none lg:grid-flow-col lg:gap-0">
             @php
                 $features = [

@@ -17,7 +17,7 @@
         </template>
     </div>
 
-    <span> 
+    <span class="text-[15px]"> 
         ({{ $rating ?? 0 }}) 
     </span>
 </div>

@@ -12,7 +12,7 @@
             {{__('SALE UP 50% MODERN FURNITURE')}}
         </p>
         <div>
-            <button class="ml-3 mt-4 btn btn-outlined px-[clamp(8px,1.5vw,16px)] first-letter:capitalize font-roboto font-bold hover:scale-110">
+            <button class="text-sm ml-3 mt-4 btn btn-outlined btn-gray px-[clamp(8px,1.5vw,16px)] first-letter:capitalize font-roboto font-bold hover:scale-110">
                 {{__('view now')}}
             </button>
         </div>

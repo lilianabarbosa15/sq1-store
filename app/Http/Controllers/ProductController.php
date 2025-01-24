@@ -6,8 +6,22 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\Product;
 
+
+use Illuminate\Support\Facades\Log;
+
 class ProductController extends Controller
 {
+    public function addToCart(int $quantity)
+    {
+        Log::info("Quantity received: $quantity");
+
+        return response()->json(['quantity' => $quantity]);
+    }
+
+
+
+
+
     /**
      * Display the specified resource.
      * e.g. http://api-endpoints.test/product/1

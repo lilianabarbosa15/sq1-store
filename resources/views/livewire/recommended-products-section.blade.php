@@ -4,7 +4,7 @@
             {{__('New Arrivals')}}
         </h2>
 
-        <p class="text-neutral-600 font-poppins font-normal text-center sm:max-w-[520px] mx-auto">
+        <p class="text-neutral-600 font-normal text-center sm:max-w-[520px] mx-auto">
             {{__('Discover our exciting new arrivals, featuring the latest trends and styles to refresh your wardrobe this season.')}}
         </p>
     </div>
@@ -39,7 +39,7 @@
     </div>
 
     <!-- Load More -->
-    <div class="flex justify-center font-poppins font-normal">
+    <div class="flex justify-center font-normal">
         @if ($selectedCategory->products->count() > $productsToShow)
             <button type="button"
                     wire:click="loadMore"

@@ -24,6 +24,7 @@ export default {
                 gray: { 
                     50: '#F3F3F3',
                     100: '#F1F1F1',
+                    150: '#DEDEDE',
                     200: '#CCCCCC',
                     400: '#8A8A8A',
                     600: '#666666',
@@ -31,9 +32,11 @@ export default {
                     900: '#191919',
                 },
                 primary: {
+                    50: '#FDEFEE',
                     100: '#F8CCCC',
                     400: '#FF706B',
                     500: '#DA3F3F',
+                    550: '#EF2D2D',
                     600: '#ED1C24',     //
                 },
             },
@@ -42,6 +45,7 @@ export default {
                 '2xs': '427px',
                 'sm': '500px',
                 'md': '768px',
+                '2md': '860px',
             },
             keyframes: {
                 "full-tl": {
@@ -58,8 +62,9 @@ export default {
                 "full-tr": "full-tr 25s linear infinite",
             },
             fontFamily: {
-                roboto: ['Roboto', 'sans-serif'],   //'sans': ['Roboto', 'sans-serif'], //
-                poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+                roboto: ['Roboto', 'sans-serif'],   //
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans], //poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+                volkhov: ['Volkhov', 'serif'],
             },
         },
     },

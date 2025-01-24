@@ -1,4 +1,4 @@
-<div class="relative z-1 wrapper sm:space-y-3 flex flex-col justify-center items-center text-center text-white font-poppins max-w-[600px]"
+<div class="relative z-1 wrapper sm:space-y-3 flex flex-col justify-center items-center text-center text-white max-w-[600px]"
     style="text-shadow: 0px 5px 5px #00000033;"
 >
     <p class="font-semibold text-[clamp(16px,6vw,24px)]">
