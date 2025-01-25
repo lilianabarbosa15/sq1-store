@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ColorController;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -11,6 +12,9 @@ Route::get('/', HomeController::class)->name('home');
 Route::prefix('product')->group(function () {
     Route::get('/{id}', [ProductController::class, 'show'])->name('show');
 });
+
+
+/////////////////
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

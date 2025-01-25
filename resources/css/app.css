@@ -57,7 +57,9 @@
 
 
 
-
+    .btn.btn-filled.btn-black {
+        @apply bg-black text-white transition-all duration-100;
+    }
 
 
 

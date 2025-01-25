@@ -63,7 +63,7 @@ export default {
             },
             fontFamily: {
                 roboto: ['Roboto', 'sans-serif'],   //
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans], //poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans], //
                 volkhov: ['Volkhov', 'serif'],
             },
         },

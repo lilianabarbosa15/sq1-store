@@ -89,14 +89,18 @@ class DatabaseSeeder extends Seeder
     }
 
     function getRandomHexColors($faker, $min = 1, $max = 10):array {
+        $colors = config('colors');         // obtains the colors from the configuration file
+        $hexValues = array_values($colors);
+
         $count = rand($min, $max);
-        $colors = [];
+        $randomColors = [];
 
         for ($i = 0; $i < $count; $i++) {
-            $colors[] = $faker->hexColor();
+            $randomColors[] = $hexValues[array_rand($hexValues)];
         }
 
-        return $colors;
+        return $randomColors;
+        
     }
 
     function getRandomImages($name, $min = 1, $max = 20):array {
@@ -104,7 +108,7 @@ class DatabaseSeeder extends Seeder
         $images = [];
 
         for ($i = 0; $i < $count; $i++) {
-            $images[] = 'https://imageplaceholder.net/700x900?text='.Str::slug($name);
+            $images[] = 'https://imageplaceholder.net/700x900?text='.Str::slug($name).'-'.($i + 1);
         }
 
         return $images;

@@ -1,4 +1,4 @@
-<div class="btn-stepper border-black flex items-center justify-between h-auto"
+<div class="btn-stepper flex items-center justify-between h-auto"
      x-data="{ value: 1 }"
      @input="value = $event.detail">
     <button class="btn hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600"

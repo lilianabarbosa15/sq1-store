@@ -6,11 +6,19 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\Product;
 
+use App\Services\ColorService;
 
 use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
+    protected $colorService;
+
+    public function __construct(ColorService $colorService)
+    {
+        $this->colorService = $colorService;
+    }
+    
     public function addToCart(int $quantity)
     {
         Log::info("Quantity received: $quantity");
@@ -38,11 +46,17 @@ class ProductController extends Controller
         //Tranformation of the JSON element other_atributes.
         $product->other_attributes = json_decode($product->other_attributes, true);
 
+        //Traduction of the hex colors selected for the product.
+        $colorNames = $this->colorService->getColorName($product->colors);
+
         /*return response()->json([
             'product' => $product,
+            'colorNames' => $colorNames->original,
         ], 200);*/
+        
         return view('pages.product', [
             'product' => $product,
+            'colorNames' => $colorNames->original,
         ]);
     }
 
