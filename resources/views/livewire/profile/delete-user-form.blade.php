@@ -34,10 +34,10 @@ new class extends Component
         </p>
     </header>
 
-    <x-danger-button
+    <x-global.buttons.danger
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-danger-button>
+    >{{ __('Delete Account') }}</x-global.buttons.danger>
 
     <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
         <form wire:submit="deleteUser" class="p-6">
@@ -51,9 +51,9 @@ new class extends Component
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-utilities.input-label for="password" value="{{ __('Password') }}" class="sr-only" />
 
-                <x-text-input
+                <x-utilities.text-input
                     wire:model="password"
                     id="password"
                     name="password"
@@ -62,17 +62,17 @@ new class extends Component
                     placeholder="{{ __('Password') }}"
                 />
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-utilities.input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <x-global.buttons.secondary x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
-                </x-secondary-button>
+                </x-global.buttons.secondary>
 
-                <x-danger-button class="ms-3">
+                <x-global.buttons.danger class="ms-3">
                     {{ __('Delete Account') }}
-                </x-danger-button>
+                </x-global.buttons.danger>
             </div>
         </form>
     </x-modal>

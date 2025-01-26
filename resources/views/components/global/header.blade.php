@@ -4,7 +4,7 @@
             <div class="flex items-end gap-4">
                 <button x-on:click="$dispatch('open-modal', 'mobile-nav')"
                     class="group hover:border-gray-900 border rounded p-2 box-border hover:bg-neutral-100 transition-all duration-200 md:hidden">
-                    <x-svg-bars3 class="size-6 text-neutral-500 group-hover:text-grey-900 transition-all duration-200" />
+                    <x-global.svg.bars3 class="size-6 text-neutral-500 group-hover:text-grey-900 transition-all duration-200" />
                 </button>
                 <a href="{{route('home')}}">
                     <span class="sr-only">{{config('app.name')}}</span>
@@ -12,9 +12,9 @@
                 </a>
             </div>
             <div class="w-fit md:flex justify-end items-center gap-5 hidden">
-                <x-search-button />
-                <x-user-navitem />
-                <x-shopping-cart-button />
+                <x-global.buttons.search />
+                <x-global.links.user-nav-link />
+                <x-global.buttons.shopping-cart />
             </div>
         </div>
     </div>
@@ -29,12 +29,12 @@
     </nav>
 
     <template x-teleport="#aside-modal" x-show="isOpen">
-        <x-modal name="mobile-nav" :maxWidth="null" :fullscreen="true">
-            <x-modal-card class="w-screen min-h-screen rounded-none pt-0 px-0 sm:p-0 flex flex-col" x-effect="window.addEventListener('resize', () => { if (window.innerWidth > 768) $dispatch('close-modal', 'mobile-nav') })">
+        <x-global.modals.modal name="mobile-nav" :maxWidth="null" :fullscreen="true">
+            <x-global.modals.card-modal class="w-screen min-h-screen rounded-none pt-0 px-0 sm:p-0 flex flex-col" x-effect="window.addEventListener('resize', () => { if (window.innerWidth > 768) $dispatch('close-modal', 'mobile-nav') })">
                 <div class="flex items-end gap-4 border-b py-5 px-4">
                     <button x-on:click="$dispatch('close-modal', 'mobile-nav')"
                             class="group hover:border-gray-900 border rounded p-2 box-border hover:bg-neutral-100 transition-all duration-200">
-                        <x-svg-x-mark class="size-6 text-neutral-500 group-hover:text-gray-900 transition-all duration-200" />
+                        <x-global.svg.x-mark class="size-6 text-neutral-500 group-hover:text-gray-900 transition-all duration-200" />
                     </button>
                     <a href="{{route('home')}}">
                         <span class="sr-only">{{config('app.name')}}</span>
@@ -50,7 +50,7 @@
                         @endforeach
                     </nav>
                 </div>
-            </x-modal-card>
-        </x-modal>
+            </x-global.modals.card-modal>
+        </x-global.modals.modal>
     </template>
 </header>

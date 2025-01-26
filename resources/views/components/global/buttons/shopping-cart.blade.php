@@ -4,6 +4,6 @@
                     flex justify-center items-center align-middle text-white font-roboto font-bold text-xs">
             3 <!--{{}}-->
         </div>    
-        <x-svg-shopping-cart class="min-size-6 text-gray-900 hover:text-primary-600" />
+        <x-global.svg.shopping-cart class="min-size-6 text-gray-900 hover:text-primary-600" />
     </button>
 </div>

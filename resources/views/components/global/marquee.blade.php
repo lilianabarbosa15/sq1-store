@@ -20,12 +20,12 @@
         class="absolute inset-y-0 start-0 z-10 w-32 bg-gradient-to-r from-white to-transparent rtl:bg-gradient-to-l"
         aria-hidden="true"
     ></div>
-    <!--
+    
     <div
         class="absolute inset-y-0 end-0 z-10 w-32 bg-gradient-to-l from-white to-transparent rtl:bg-gradient-to-r"
         aria-hidden="true"
     ></div>
-    -->
+
     <!-- END Marquee overlay gradients -->
 
     <!-- Marquee Track -->

@@ -13,11 +13,11 @@
                 @endforeach
             </div>
 
-            <x-marquee class="lg:hidden ">
+            <x-global.marquee class="lg:hidden ">
                 @foreach(collect(File::allFiles('images/brands')) as $image)
                     <img src="{{ $image }}" alt="" class="w-full h-auto max-w-[clamp(80px,25vw,160px)]">
                 @endforeach
-            </x-marquee>
+            </x-global.marquee>
         </div>
 
         <!-- Recommeded products Section -->
@@ -44,10 +44,10 @@
              grid-cols-2 grid-flow-row  lg:grid-cols-none lg:grid-flow-col lg:gap-0">
             @php
                 $features = [
-                    ['icon' => 'svg-quality', 'title' => __('High Quality'), 'subtitle' => __('crafted from top materials')],
-                    ['icon' => 'svg-warranty', 'title' => __('Warranty Protection'), 'subtitle' => __('Over 2 years')],
-                    ['icon' => 'svg-shipping', 'title' => __('Free shipping'), 'subtitle' => __('Order over 150 $')],
-                    ['icon' => 'svg-support', 'title' => __('24 / 7 Support'), 'subtitle' => __('Dedicated support')],
+                    ['icon' => 'global.svg.quality', 'title' => __('High Quality'), 'subtitle' => __('crafted from top materials')],
+                    ['icon' => 'global.svg.warranty', 'title' => __('Warranty Protection'), 'subtitle' => __('Over 2 years')],
+                    ['icon' => 'global.svg.shipping', 'title' => __('Free shipping'), 'subtitle' => __('Order over 150 $')],
+                    ['icon' => 'global.svg.support', 'title' => __('24 / 7 Support'), 'subtitle' => __('Dedicated support')],
                 ];
             @endphp
 
@@ -67,5 +67,5 @@
         </aside>
 
     </main>
-    <x-footer/>
+    <x-modules.home.footer/>
 </x-guest-layout>

@@ -54,7 +54,7 @@
         {{ __('Quantity') }}
     </p>
     <div class="flex gap-[3%] md:gap-[4%] h-[clamp(36px,6vw,45px)]">
-        <x-stepper-button />
+        <x-global.buttons.stepper />
         <button class="btn btn-outlined btn-black p-0 w-[80%]"
                 @click="addToCart(quantity)">
             {{ __('Add to cart') }}

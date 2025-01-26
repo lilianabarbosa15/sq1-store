@@ -37,40 +37,35 @@
                         {{ $product->brand }} </p>
                     <p class="capitalize font-volkhov text-black text-[clamp(24px,3vw,30px)]">
                         {{ $product->name }}</p>
-                    <x-rating-mark :rating="$product->rating"/>
+                    <x-modules.product.rating-mark :rating="$product->rating"/>
                 </div>
-                <x-star-button />
+                <x-global.buttons.star />
             </div>
 
             <!-- Product Price -->
-            <x-product.prices-information :product="$product" />
+            <x-modules.product.prices-information :product="$product" />
 
             <!-- Product Currently Viewed -->
             <div class="flex items-center gap-1 xs:gap-3">
-                <x-svg-views />
+                <x-global.svg.views />
                 <p class="text-[14px] xs:text-base text-gray-400 font-normal"> 
                     {{ $product->review_count }} {{ __('people are viewing this right now') }}
                 </p>
             </div>
 
             <!-- Product Sale Countdown -->
-            <x-product.countdown-sale :product="$product" />
+            <x-modules.product.countdown-sale :product="$product" />
 
             <!-- Product Availability in Stock -->
             <div class="flex flex-col md:gap-2">
                 <p class="text-gray-600">
-                    {{ __('Only') }}
-                    <strong> {{ $product->stock }} </strong>
-                    {{ __('item(s) left in stock!') }}
+                    {{ __('Only') }} <strong> {{ $product->stock }} </strong> {{ __('item(s) left in stock!') }}
                 </p>
-                <div class="h-[5px] w-full bg-gray-150 rounded-full">
-                    <div class="h-full bg-primary-550 rounded-full" 
-                         style="width: {{ $product->stock }}%;"></div>
-                </div>
+                <x-global.ui.progress-bar :progress="$product->stock" />
             </div>
 
             <!-- Product Purchase Details -->
-            <x-product.purchase-details :product="$product" :colorNames="$colorNames" />
+            <x-modules.product.purchase-details :product="$product" :colorNames="$colorNames" />
             
         </section>
     </main>
