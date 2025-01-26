@@ -2,7 +2,7 @@
     <main class="flex-1">
         <!-- Hero Section -->
         <section class="py-10 sm:py-20 bg-blue-100/80">
-            <livewire:hero-section/>
+            <x-modules.home.hero-section />
         </section>
         
         <!-- Asociated brands Section -->
@@ -36,7 +36,7 @@
             <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat bg-slate-700"
                     style="background-image: url('{{ $background }}'); 
                             filter: blur(2px) contrast(0.9) brightness(0.6);" > </div>
-            <livewire:promotional-section/>
+            <x-modules.home.promotional-section />
         </div>
 
         <!-- Additional information -->

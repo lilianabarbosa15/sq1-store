@@ -23,7 +23,9 @@ class ProductController extends Controller
     {
         Log::info("Quantity received: $quantity");
 
-        return response()->json(['quantity' => $quantity]);
+        return response()->json([
+            'quantity' => $quantity
+        ]);
     }
 
 

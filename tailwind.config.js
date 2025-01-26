@@ -32,8 +32,9 @@ export default {
                     900: '#191919',
                 },
                 primary: {
-                    50: '#FDEFEE',
-                    100: '#F8CCCC',
+                    50: '#F8F8F8',
+                    100: '#FDEFEE',
+                    200: '#F8CCCC',
                     400: '#FF706B',
                     500: '#DA3F3F',
                     550: '#EF2D2D',
