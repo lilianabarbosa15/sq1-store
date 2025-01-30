@@ -10,10 +10,13 @@ class Category extends Model
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'description'];
+    protected $fillable = [
+        'name', 
+        'slug', 
+        'description'
+    ];
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
+    public function products() {
+        return $this->belongsToMany(Product::class, 'category_product');
     }
 }

@@ -9,10 +9,11 @@ use App\Http\Controllers\ColorController;
 Route::get('/', HomeController::class)->name('home');
 
 //products
-Route::prefix('product')->group(function () {
-    Route::get('/{id}', [ProductController::class, 'show'])->name('show');
+Route::prefix('product')->group( function () {
+    //Route::get('/search', [ProductController::class, 'search']);
+    //Route::get('/', [ProductController::class, 'index']);       //
+    Route::get('/{id}', [ProductController::class, 'show'])->name('show');   
 });
-
 
 /////////////////
 

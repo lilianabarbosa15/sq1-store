@@ -2,115 +2,31 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Product;
+
 use App\Models\User;
-use FakerCommerce\Faker\FakerFactory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        $fakerStore = FakerFactory::create();
 
-        try {
-            User::factory()->create([
-                'name' => 'Test User',
-                'email' => 'test@example.com',
-            ]);
-        } catch (\Exception $e) {
-            // do nothing
-        }
+        User::factory(15)->create();
 
-        $categoryNames = [
-            "men's fashion",
-            "women's fashion",
-            "women's accessories",
-            "men's accessories",
-            "discount deals",
-            "fashion",
-            "hats",
-            "sandal",
-            "belt",
-            "bags",
-            "snacker",
-            "denim",
-            "minimog",
-            "vagabond",
-            "sunglasses",
-            "beachwear"
-        ];
+        $this->call([
+            CategoriesTableSeeder::class,
+            ProductsTableSeeder::class,
+            ProductVariantsTableSeeder::class,
+            
+            //OrdersTableSeeder::class,
+            //ShoppingCartsTableSeeder::class,
+            //OrderItemsTableSeeder::class,
+            //CartItemsTableSeeder::class,
+        ]);
 
-        foreach ($categoryNames as $categoryName) {
-            try {
-                $categories[] = \App\Models\Category::factory()->create([
-                    'name' => $categoryName,
-                    'slug' => Str::slug($categoryName),
-                    'description' => fake()->paragraph,
-                ]);
-            } catch (\Exception $e) {
-                // do nothing
-            }
-        }
 
-        $categories = Category::all()->pluck('id')->toArray();
-
-        foreach (range(1, 20) as $index) {
-            $name = $fakerStore->name();
-            try {
-                $product = Product::factory()->create([
-                    'name' => $name,
-                    'slug' => Str::slug($name),
-                    'brand' => fake()->domainWord(),
-                    'description' => fake()->paragraph(),
-                    'price' => fake()->randomFloat(2, 10, 1000),
-                    'sale_price' => fake()->boolean() ? fake()->randomFloat(2, 10, 1000) : null,
-                    'stock' => fake()->numberBetween(1, 100),
-                    'images' => $this->getRandomImages($name),
-                    'rating' => fake()->numberBetween(1, 5),
-                    'review_count' => fake()->numberBetween(1, 100),
-                    'sizes' => ['S', 'M', 'L', 'XL'],
-                    'colors' => $this->getRandomHexColors(fake()),
-                ]);
-
-                $product->categories()->attach(
-                    fake()->randomElements($categories, rand(1, count($categories)))
-                );
-            } catch (\Exception $e) {
-                dd($e->getMessage());
-            }
-        }
-    }
-
-    function getRandomHexColors($faker, $min = 1, $max = 10):array {
-        $colors = config('colors');         // obtains the colors from the configuration file
-        $hexValues = array_values($colors);
-
-        $count = rand($min, $max);
-        $randomColors = [];
-
-        for ($i = 0; $i < $count; $i++) {
-            $randomColors[] = $hexValues[array_rand($hexValues)];
-        }
-
-        return $randomColors;
-        
-    }
-
-    function getRandomImages($name, $min = 1, $max = 20):array {
-        $count = rand($min, $max);
-        $images = [];
-
-        for ($i = 0; $i < $count; $i++) {
-            $images[] = 'https://imageplaceholder.net/700x900?text='.Str::slug($name).'-'.($i + 1);
-        }
-
-        return $images;
     }
 }

@@ -33,8 +33,9 @@
     
     <!-- Products -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-[clamp(16px,1vw,32px)] justify-items-center">
+        
         @foreach($selectedCategory->products->take($productsToShow) as $product)
-            <x-global.ui.product-card :product="$product"/>
+            <livewire:global.ui.product-card :product="$product" wire:key="product-{{ $product->id }}" />
         @endforeach
     </div>
 

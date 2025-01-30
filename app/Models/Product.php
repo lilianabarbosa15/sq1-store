@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+//use App\Models\ProductVariant;
+//use App\Models\CategoryItem;
+
 class Product extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductFactory> */
@@ -14,25 +17,18 @@ class Product extends Model
         'name',
         'slug',
         'brand',
-        'description',
         'price',
-        'sale_price',
-        'stock',
-        'images',
-        'rating',
-        'review_count',
-        'sizes',
-        'colors',
+        //'tag',
+        'description',
     ];
 
-    protected $casts = [
-        'images' => 'array',
-        'sizes' => 'array',
-        'colors' => 'array',
-    ];
+    public $timestamps = false;
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class);
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'category_product');
+    }
+
+    public function product_variants() {
+        return $this->hasMany(ProductVariant::class);
     }
 }
