@@ -30,7 +30,7 @@ class ProductVariantFactory extends Factory
             'sale_price' => $sale && $product->price > 5 
                             ? $this->faker->randomFloat(2, 5, $product->price) 
                             : null,
-            'sale_end_time' => $sale ? $this->faker->dateTimeBetween('-30 days', '+30 days')->format('Y-m-d\TH:i:s\Z') : null,
+            'sale_end_time' => $sale ? $this->faker->dateTimeBetween('+7 days', '+30 days')->format('Y-m-d\TH:i:s\Z') : null,
             'rating' => $this->faker->numberBetween(1, 5),
             'quantity' => json_encode([
                 's' => $this->faker->numberBetween(1, 100),

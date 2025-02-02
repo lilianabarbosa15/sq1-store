@@ -6,29 +6,28 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\Product;
 
-use App\Services\ColorService;
-
-use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
-    protected $colorService;
 
-    public function __construct(ColorService $colorService)
+    private function _decodeJsonAttributes( Object $items ): Object
     {
-        $this->colorService = $colorService;
+        // Transform the collection by iterating through each item
+        $items->transform(function ($item) {
+
+            // Check if 'product_variants->quatity' contains a valid JSON string
+            // Decode the JSON string into an associative array
+            foreach ($item->product_variants as $variant) {
+                $variant->quantity = json_decode($variant->quantity, true);
+            }
+            
+            // Return the item with the 'product_variants->quatity' field transformed into an array
+            return $item;
+        });
+
+        // Return the collection after all items have been transformed
+        return $items;
     }
-    
-    public function addToCart(int $quantity)
-    {
-        Log::info("Quantity received: $quantity");
-
-        return response()->json([
-            'quantity' => $quantity
-        ]);
-    }
-
-
 
 
 
@@ -38,40 +37,29 @@ class ProductController extends Controller
      */
     public function show(int $id):View
     {
-        $product = Product::find($id);
-        
+        $product = Product::with(['product_variants'])->find($id);
+
         //If there is no product in the database we return a 404.
         if(!$product) {
             return response()->json(["message" => "Product Not Found"], 404);
         }
 
-        //Tranformation of the JSON element other_atributes.
-        $product->other_attributes = json_decode($product->other_attributes, true);
-
-        //Traduction of the hex colors selected for the product.
-        $colorNames = $this->colorService->getColorName($product->colors);
+        //Tranformation of the JSON element product_variants->quantity.
+        $product = collect([$product]);
+        $product = $this->_decodeJsonAttributes($product);
 
         /*return response()->json([
             'product' => $product,
-            'colorNames' => $colorNames->original,
         ], 200);*/
         
         return view('pages.product', [
-            'product' => $product,
-            'colorNames' => $colorNames->original,
+            'product' => $product->first(),
         ]);
     }
 
 
     public function __invoke():View
     {
-        /*$firstsCategories = Category::where('slug', '!=', 'discount-deals')->take(15)->get();
-        $discountCategory = Category::where('slug', 'discount-deals')->first();
-
-        $categories = collect($firstsCategories)->merge([$discountCategory]);*/
-
-        return view('pages.product', [
-            //'categories' => $categories
-        ]);
+        return view('pages.product');
     }
 }

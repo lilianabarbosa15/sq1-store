@@ -44,7 +44,7 @@
     </div>
 
     <!-- Buy Button -->
-    <form action="{{ route('show', ['id' => $product->id]) }}" method="GET">
+    <form action="{{ route('show', ['id' => $selectedVariant->product_id]) }}" method="GET">
         <button class="btn btn-outlined btn-primary w-full mt-4 py-2 rounded-[10px]"
                 type="submit">
             {{ __('Comprar') }}
