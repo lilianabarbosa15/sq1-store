@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Home;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
@@ -36,6 +36,6 @@ class RecommendedProductsSection extends Component
 
     public function render():View
     {
-        return view('livewire.recommended-products-section');
+        return view('livewire.pages.home.recommended-products-section');
     }
 }

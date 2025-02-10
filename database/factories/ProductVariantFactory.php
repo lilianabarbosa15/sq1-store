@@ -63,7 +63,7 @@ class ProductVariantFactory extends Factory
         for ($i = 0; $i < $count; $i++) {
             $images[] = 'https://imageplaceholder.net/700x900?text=product'
                 . Str::slug($product_id) . '-' 
-                . Str::slug($color) . '/' 
+                . Str::slug($color) . '-' 
                 . ($i + 1);
         }
     

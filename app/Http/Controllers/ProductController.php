@@ -29,11 +29,10 @@ class ProductController extends Controller
         return $items;
     }
 
-
-
+    
     /**
      * Display the specified resource.
-     * e.g. http://api-endpoints.test/product/1
+     * e.g. http://localhost:8000/product/1
      */
     public function show(int $id):View
     {

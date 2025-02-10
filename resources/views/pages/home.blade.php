@@ -24,7 +24,7 @@
         <section class="pb-20 border-t-[40px] bg-neutral-300 min-[761px]:bg-white"
              style="border-image: linear-gradient(180deg, #F9F9F9, #FFFFFF, #FFFFFF); border-image-slice: 380; box-sizing: border-box; flex-wrap: wrap;"
         >
-            <livewire:recommended-products-section/>
+            <livewire:home.recommended-products-section/>
         </section>
 
         <!-- Promotional Section -->

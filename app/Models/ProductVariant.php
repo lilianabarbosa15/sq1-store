@@ -38,9 +38,9 @@ class ProductVariant extends Model
     
     /*public function order_items() {
         return $this->hasMany(OrderItem::class, 'product_variant_id', 'id');
-    }
+    }*/
 
     public function cart_items() {
         return $this->hasMany(CartItem::class, 'product_variant_id', 'id');
-    }*/
+    }
 }

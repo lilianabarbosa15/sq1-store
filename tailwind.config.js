@@ -47,6 +47,8 @@ export default {
                 'sm': '500px',
                 'md': '768px',
                 '2md': '860px',
+                'xl': '1280px',
+                '2xl': '1536px',
             },
             keyframes: {
                 "full-tl": {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Actions\Logout;
+use App\Livewire\Auth\Logout;
 use Livewire\Volt\Component;
 
 new class extends Component
@@ -23,8 +23,8 @@ new class extends Component
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-global.svg.application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{route('dashboard')}}" wire:navigate>
+                        <img src="{{asset('images/sq1-logo.svg')}}" width="110" />
                     </a>
                 </div>
 
@@ -33,12 +33,15 @@ new class extends Component
                     <x-global.links.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-global.links.nav-link>
+                    <x-global.links.nav-link :href="route('home')" :active="request()->routeIs('home')" wire:navigate>
+                        {{ __('Home') }}
+                    </x-global.links.nav-link>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-            <x-dropdown align="right" width="48">
+                <x-global.navigation.dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                 aria-label="User menu" aria-haspopup="true">
@@ -64,7 +67,7 @@ new class extends Component
                             </x-global.links.dropdown-link>
                         </button>
                     </x-slot>
-                </x-dropdown>
+                </x-global.navigation.dropdown>
             </div>
 
             <!-- Hamburger -->

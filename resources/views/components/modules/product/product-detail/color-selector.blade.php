@@ -1,6 +1,6 @@
 @props(['selectedVariant', 'product', 'stockData'])
 
-<div class="grid md:gap-3" x-data="{ selectedColor: '{{ $selectedVariant->color }}' }"  x-init="stock = {{ $stockData }};"  >
+<div class="grid md:gap-3" x-data="{ selectedColor: '{{ $selectedVariant->color }}' }"  x-init="stock = JSON.parse(@js($stockData))"  >
     <p class="font-volkhov font-bold">
         {{ __('Color') }}: <span class="font-normal capitalize">{{ $selectedVariant->color_name }}</span> <!--{{ $selectedVariant->color }}-->
     </p>

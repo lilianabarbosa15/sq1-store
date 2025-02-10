@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 
 use App\Models\User;
+use App\Models\ShoppingCart;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,20 +14,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        
+        User::factory(15)->create()->each(function ($user) {
+            $faker = \Faker\Factory::create();
+            
+            $hasActiveCart = true; //$faker->boolean(50);
 
-        User::factory(15)->create();
+            if ($hasActiveCart) {
+                ShoppingCart::factory()->create([
+                    'user_id' => $user->id,
+                    'status' => 'active',
+                ]);
+            }
+            
+            ShoppingCart::factory(rand(1, 3))->create([
+                'user_id' => $user->id,
+                'status' => $faker->randomElement(['checking_out', 'checked_out', 'abandoned']),
+            ]);
+        });
 
         $this->call([
             CategoriesTableSeeder::class,
             ProductsTableSeeder::class,
             ProductVariantsTableSeeder::class,
             
-            //OrdersTableSeeder::class,
             //ShoppingCartsTableSeeder::class,
+            CartItemsTableSeeder::class,
+            
+            //OrdersTableSeeder::class,
             //OrderItemsTableSeeder::class,
-            //CartItemsTableSeeder::class,
+            
         ]);
-
 
     }
 }

@@ -1,9 +1,3 @@
-@php
-    $sizes = array_keys($selectedVariant->quantity);
-    $defaultSize = $sizes[0];
-    $stockData = json_encode($selectedVariant->quantity);
-@endphp
-
 <main class="wrapper grid grid-cols-1 md:grid-cols-2 py-6 gap-[clamp(20px,3vw,45px)]">
     <!-- Product Images -->
     <x-modules.product.product-images :images="$selectedVariant->images" :product="$product" />
@@ -11,32 +5,36 @@
     <!-- Features -->
     <section class="max-md:wrapper max-w-[585px] flex flex-col gap-3">
 
-        <!-- title -->
+        <!-- Title -->
         <x-modules.product.product-title :product="$product" :selectedVariant="$selectedVariant" />
 
-        <!-- other details -->
-        <div class="flex flex-col gap-5" x-data="{ selectedSize: '{{ $defaultSize }}', stockMax: 0, stock: @entangle('stockData') }"
-             x-effect="stockMax = stock[selectedSize];" >
-
-            <!-- product price -->
+        <!-- Other Details -->
+        <div class="flex flex-col gap-5" 
+            x-data="{
+                selectedSize: '{{ $defaultSize }}',
+                stock: @entangle('stockData'),
+                get stockMax() {
+                    return this.stock[this.selectedSize] || 0;
+                }
+            }" 
+        >
+            <!-- Product Price -->
             <x-modules.product.product-detail.price :selectedVariant="$selectedVariant" :product="$product" />
-            <!-- product views -->
+            <!-- Product Views -->
             <x-modules.product.product-detail.view-counter :selectedVariant="$selectedVariant" />
-            <!-- product sale countdown -->
+            <!-- Product Sale Countdown -->
             <x-modules.product.product-detail.countdown :selectedVariant="$selectedVariant" />
-            <!-- products left -->
+            <!-- Products Left / Progress Bar -->
             <x-modules.product.product-detail.progress-bar />
-            <!-- product size -->
+            <!-- Product Size Selector -->
             <x-modules.product.product-detail.size-selector :sizes="$sizes" />
-            <!-- product color -->
+            <!-- Product Color Selector -->
             <x-modules.product.product-detail.color-selector :selectedVariant="$selectedVariant" :product="$product" :stockData="$stockData" />
-            <!-- product quantity -->
+            <!-- Product Quantity Selector -->
             <x-modules.product.product-detail.quantity-selector :selectedVariant="$selectedVariant" />
-
         </div>
 
-        <!-- delivery and payment information-->
-        <x-modules.product-delivery-payment-details />
-
+        <!-- Delivery and Payment Information -->
+        <x-modules.product.product-delivery-payment-details />
     </section>
 </main>
