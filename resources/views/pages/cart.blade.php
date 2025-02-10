@@ -1,3 +1,3 @@
 <x-guest-layout :navBackground="'bg-white'">
-    <livewire:checkout.checkout-page />
+    <livewire:cart.cart-page />
 </x-guest-layout>

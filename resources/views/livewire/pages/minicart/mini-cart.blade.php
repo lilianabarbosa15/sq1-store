@@ -92,7 +92,7 @@
             
         <!-- Display the subtotal value (formatted to two decimals) -->
         <div class="flex justify-between w-full">
-            <p>{{ __('Subtotal: ') }}</p>
+            <p>{{ __('Subtotal') }}</p>
             <p>$<span x-text="(parseFloat(subtotal)).toFixed(2)"></span></p>
         </div>
 
@@ -102,6 +102,6 @@
             {{ __('Checkout') }}
         </button>
         <!-- Link to view the cart -->
-        <a class="font-volkhov underline" href="{{ route('checkout') }}" target="_top">{{ __('View Cart') }}</a>
+        <a class="font-volkhov underline" href="{{ route('cart') }}" target="_top">{{ __('View Cart') }}</a>
     </footer>
 </div>

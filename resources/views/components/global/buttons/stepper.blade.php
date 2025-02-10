@@ -1,6 +1,6 @@
 @props(['value' => 1, 'itemId'])
 
-<div {{ $attributes->merge(['class' => 'btn-stepper flex items-center justify-between h-auto']) }}
+<div {{ $attributes->merge(['class' => 'btn-stepper']) }}
      x-data="{
          value: {{ $value }},
          min: 1,
@@ -12,7 +12,7 @@
      x-effect="if (value > stockMax) { value = stockMax; } if (value < min) { value = min; }">
     
     <!-- increment button -->
-    <button class="btn flex items-center justify-center hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600 font-bold"
+    <button class="btn-stepper-btn btn hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600 font-bold"
         :disabled="value === min"
         @click=" if (value > min) { value--; } ">
         -
@@ -24,7 +24,7 @@
     </div>
     
     <!-- decrement button -->
-    <button class="btn flex items-center justify-center hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600 font-bold"
+    <button class="btn-stepper-btn btn hover:border-primary-600 hover:!bg-primary-600/5 hover:!text-primary-600 font-bold"
             :disabled="value === stockMax"
             @click=" if (value < stockMax) { value++; } ">
         +

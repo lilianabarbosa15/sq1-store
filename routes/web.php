@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,9 @@ Route::prefix('product')->group( function () {
     //Route::get('/', [ProductController::class, 'index']);       //
     Route::get('/{id}', [ProductController::class, 'show'])->name('show');   
 });
+
+//cart
+Route::get('/cart', CartController::class)->name('cart');
 
 //checkout
 Route::get('/checkout', CheckoutController::class)->name('checkout');

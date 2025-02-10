@@ -9,9 +9,9 @@
 
     <div class="flex gap-[3%] md:gap-[4%] h-[clamp(36px,6vw,45px)]">
         
-        <x-global.buttons.stepper wire:key="stepper-{{ $selectedVariant->id }}" :value="1" :item-id="$selectedVariant->id" />
+        <x-global.buttons.stepper class="w-[26%]" wire:key="stepper-{{ $selectedVariant->id }}" :value="1" :item-id="$selectedVariant->id" />
 
-        <button class="btn btn-outlined btn-black p-0 w-[80%]"
+        <button class="btn btn-outlined btn-black p-0 w-[75%]"
                 wire:click="addToCart(quantity, {{ $selectedVariant->id }}, selectedSize)">
             {{ __('Add to cart') }}
         </button>

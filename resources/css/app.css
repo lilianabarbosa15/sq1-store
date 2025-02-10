@@ -2,41 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide elements with the x-cloak attribute until Alpine.js is ready */
 [x-cloak] {
     display: none !important;
 }
 
 @layer utilities {
-    .no-visibility-scrollbar::-webkit-scrollbar {  /*recommended-products-section*/
+    /* Customize the scrollbar width for specific sections */
+    .no-visibility-scrollbar::-webkit-scrollbar {  /* recommended-products-section */
         width: 1px;
     }
 
-    .no-clear::-webkit-search-cancel-button {   /*nav-search*/
+    /* Remove the cancel button appearance from search inputs */
+    .no-clear::-webkit-search-cancel-button {   /* nav-search */
         -webkit-appearance: none;
     }
 
-    .form-background:-webkit-autofill {         /*nav-search*/
-        -webkit-box-shadow: 0 0 0px 1000px #f3f4f6 inset;       /*bg-neutral-100*/
-        box-shadow: 0 0 0px 1000px #f3f4f6 inset !important;    /*bg-neutral-100*/
+    /* Remove the default autofill background by applying a custom inset box-shadow */
+    .form-background:-webkit-autofill {         /* nav-search */
+        -webkit-box-shadow: 0 0 0px 1000px #f3f4f6 inset;       /* bg-neutral-100 */
+        box-shadow: 0 0 0px 1000px #f3f4f6 inset !important;    /* bg-neutral-100 */
     }
 
+    /* A custom inset box-shadow utility for inner white borders */
     .shadow-inset-white {
         box-shadow: inset 0 0 0 3px white;
     }
 }
 
 @layer components {
+    /* A wrapper class for common container styles */
     .wrapper {
         @apply w-full max-w-7xl mx-auto px-4 2xl:px-0 transition-all duration-100;
     }
 
+    /* Basic button styles with responsive padding using clamp() */
     .btn {
-        @apply py-3 px-[clamp(16px,1.8vw,32px)] box-border rounded-lg;
+        @apply py-[clamp(6px,1.5vh,20px)] px-[clamp(10px,1vw,32px)] box-border rounded-lg;
     }
     
+    /* --- Stepper Button Component Styles --- */
+    
+    /* 
+       .btn-stepper: The container for the stepper buttons.
+       - Displayed as a flex container.
+       - Centers items vertically (items-center) and distributes space between them (justify-between).
+       - Uses box-border so that padding and borders are included in the overall dimensions.
+       - overflow-hidden prevents inner content from overflowing the container.
+       - w-full ensures it takes the full width of its parent.
+    */
     .btn-stepper {
-        @apply flex flex-row justify-between items-center text-base font-normal box-border rounded-lg border;
+        @apply flex items-center justify-between box-border rounded-lg border overflow-hidden;
+        @apply w-full max-h-11; /* Modify if a specific width is required */
+        /* Optionally, add a fixed height or minimum height:
+           @apply h-12 min-h-[3rem]; */
     }
+    
+    /* 
+       .btn-stepper-btn: Styles for the internal buttons (e.g., minus and plus buttons)
+       - Display as flex so content (icon/text) is centered.
+       - flex-grow makes the button expand to fill available space.
+       - Responsive horizontal and vertical padding using clamp() ensures consistency across breakpoints.
+    */
+    .btn-stepper-btn {
+        @apply flex items-center justify-center flex-grow;
+        @apply px-[clamp(8px,1vw,16px)] py-[clamp(6px,1.5vh,14px)];
+    }
+
+    /* --- Other Button Variants --- */
 
     .btn.btn-outlined.btn-primary {
         @apply bg-white text-primary-600 border border-primary-600 hover:bg-primary-600/5 transition-all duration-100;
@@ -50,26 +83,15 @@
         @apply text-black border border-black hover:bg-black hover:text-white transition-all duration-100;
     }
 
-
-
-
-
-
-
-
     .btn.btn-filled.btn-black {
         @apply bg-black text-white transition-all duration-100;
     }
 
-
-
-
     .btn.btn-filled.btn-gray {
-        @apply bg-neutral-50 text-gray-400; /*hover:text-neutral-700 border transition-all hover:shadow hover:bg-neutral-200*/
+        @apply bg-neutral-50 text-gray-400;
     }
 
     .btn.btn-filled.btn-primary {
         @apply bg-primary-600 text-white hover:bg-primary-600/90 transition-all duration-100;
     }
-
 }
