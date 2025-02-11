@@ -27,3 +27,10 @@
         @livewireScripts
     </body>
 </html>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        // Create a global store for the wrap state
+        Alpine.store('wrapState', { wrap: false });
+    });
+</script>

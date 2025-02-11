@@ -24,12 +24,14 @@ class DatabaseSeeder extends Seeder
                 ShoppingCart::factory()->create([
                     'user_id' => $user->id,
                     'status' => 'active',
+                    'wrap' => $faker->boolean(50),
                 ]);
             }
             
             ShoppingCart::factory(rand(1, 3))->create([
                 'user_id' => $user->id,
                 'status' => $faker->randomElement(['checking_out', 'checked_out', 'abandoned']),
+                'wrap' => $faker->boolean(50),
             ]);
         });
 

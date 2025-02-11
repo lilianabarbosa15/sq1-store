@@ -19,6 +19,7 @@ return new class extends Migration
                     ->constrained()
                     ->onDelete('cascade');
             $table->enum('status', ['active', 'checking_out', 'checked_out', 'abandoned']);
+            $table->boolean('wrap')->default(false);
             $table->timestamps();   //OrderDate (created_at), LastUpdate (updated_at)
         });
     }

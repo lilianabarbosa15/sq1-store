@@ -9,8 +9,6 @@ class CartController extends Controller
 {
     public function __invoke():View
     {
-        return view('pages.cart', [
-            //'categories' => $categories
-        ]);
+        return view('pages.cart');
     }
 }

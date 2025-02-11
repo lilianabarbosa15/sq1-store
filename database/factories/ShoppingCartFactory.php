@@ -28,6 +28,7 @@ class ShoppingCartFactory extends Factory
             */
             'user_id' => $this->faker->randomElement($usersIds),
             'status' => $this->faker->randomElement(['active', 'checking_out', 'checked_out', 'abandoned']),
+            'wrap' => $this->faker->boolean(50),
         ];
     }
 }
