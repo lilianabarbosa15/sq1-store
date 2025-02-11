@@ -41,9 +41,6 @@ class MiniCart extends Component
                 'status' => 'active',
             ]);
         }
-        // No wrapping product
-        $this->shoppingCart->wrap = false;
-        $this->shoppingCart->save();
         //
         $this->refreshCart();
     }

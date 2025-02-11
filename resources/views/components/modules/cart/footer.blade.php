@@ -20,7 +20,7 @@
         -->
         <input type="checkbox"
                x-model="$store.wrapState.wrap"
-               @change="$wire.call('wrapCart', $store.wrapState.wrap)"
+               @change="localStorage.setItem('wrap', $store.wrapState.wrap); $wire.call('wrapCart', $store.wrapState.wrap)"
                class="w-6 h-6 border-[3px] border-black bg-white 
                       checked:bg-gray-400 checked:border-gray-400 focus:outline-none focus:ring-0 active:bg-gray-400">
         <label class="text-gray-400">

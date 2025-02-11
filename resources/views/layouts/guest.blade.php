@@ -29,8 +29,10 @@
 </html>
 
 <script>
-    document.addEventListener('alpine:init', () => {
-        // Create a global store for the wrap state
-        Alpine.store('wrapState', { wrap: false });
+document.addEventListener('alpine:init', () => {
+    Alpine.store('wrapState', {
+        // Lee el valor guardado en localStorage; si no existe, asigna un valor por defecto (por ejemplo, true).
+        wrap: localStorage.getItem('wrap') === 'true' || true,
     });
+});
 </script>
