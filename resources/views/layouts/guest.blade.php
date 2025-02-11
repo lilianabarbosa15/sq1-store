@@ -31,7 +31,7 @@
 <script>
 document.addEventListener('alpine:init', () => {
     Alpine.store('wrapState', {
-        // Lee el valor guardado en localStorage; si no existe, asigna un valor por defecto (por ejemplo, true).
+        // Reads the value saved on the localStorage; if it doesn't exist, it's created
         wrap: localStorage.getItem('wrap') === 'true' || true,
     });
 });
