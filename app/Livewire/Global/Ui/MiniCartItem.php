@@ -24,6 +24,8 @@ class MiniCartItem extends Component
     // The variant of the product
     public ProductVariant $variant;
 
+    public $wrapStatus = false;
+
     
     /**
      * The mount method is called when the component is initialized.

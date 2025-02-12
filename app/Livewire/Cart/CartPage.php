@@ -18,6 +18,8 @@ class CartPage extends Component
     public $minSubtotal = 4000; // The minimum subtotal required for free shipping
     public $shippingPrice = ''; //
 
+    public $wrapStatus = true;
+
     // 
     protected $listeners = [
         'itemRemoved'     => 'refreshCart',
@@ -41,6 +43,8 @@ class CartPage extends Component
                 'status' => 'active',
             ]);
         }
+        //
+        $this->wrapStatus = $this->shoppingCart->wrap;
         //
         $this->refreshCart();
     }

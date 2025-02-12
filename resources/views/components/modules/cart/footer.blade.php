@@ -1,4 +1,6 @@
 @props([
+    //
+    'wrapStatus' => false,
     // The subtotal to display (as a string or numeric value)
     'subtotal' => '0',
     // The shipping price to display
@@ -11,7 +13,9 @@
     'wrapperClass' => 'col-start-1 md:col-start-2 col-end-3'
 ])
 
-<footer class="{{ $wrapperClass }} grid place-items-center text-[clamp(15px,1.8vw,22px)] gap-2 md:gap-3 pt-2">
+<footer x-data="{ wrapStatus: @json($wrapStatus) }"
+        x-init="if (wrapStatus) { $store.wrapState.wrap = true }"
+        class="{{ $wrapperClass }} grid place-items-center text-[clamp(15px,1.8vw,22px)] gap-2 md:gap-3 pt-2">
     <!-- Wrap Checkbox and Label -->
     <aside class="flex items-center justify-self-start gap-4 pb-4 w-full border-b border-black/40">
         <!-- 
@@ -20,7 +24,7 @@
         -->
         <input type="checkbox"
                x-model="$store.wrapState.wrap"
-               @change="localStorage.setItem('wrap', $store.wrapState.wrap); $wire.call('wrapCart', $store.wrapState.wrap)"
+               @change="$wire.call('wrapCart', $store.wrapState.wrap)"
                class="w-6 h-6 border-[3px] border-black bg-white 
                       checked:bg-gray-400 checked:border-gray-400 focus:outline-none focus:ring-0 active:bg-gray-400">
         <label class="text-gray-400">

@@ -50,6 +50,7 @@
          - The wrapperClass prop is used to control its layout in the grid.
     -->
     <x-modules.cart.footer 
+        :wrapStatus="$wrapStatus"
         :subtotal="$subtotal" 
         :shippingPrice="$shippingPrice" 
         wrapperClass="col-start-1 md:col-start-2 col-end-3"

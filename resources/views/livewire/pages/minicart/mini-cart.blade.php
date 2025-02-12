@@ -77,6 +77,7 @@
          It uses Alpine to manage the state of the checkbox.
     -->
     <x-modules.cart.footer 
+        :wrapStatus="$wrapStatus"
         :subtotal="$subtotal"
         :show="false"
     />

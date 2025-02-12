@@ -17,6 +17,8 @@ class MiniCart extends Component
     public $subtotal = 0;       // The total cost of items in the cart (calculated as the sum of unit_price * quantity)
     public $minSubtotal = 4000; // The minimum subtotal required for free shipping
 
+    public $wrapStatus = true;
+
     //
     protected $listeners = [
         'itemRemoved'     => 'refreshCart',
@@ -41,6 +43,8 @@ class MiniCart extends Component
                 'status' => 'active',
             ]);
         }
+        //
+        $this->wrapStatus = $this->shoppingCart->wrap;
         //
         $this->refreshCart();
     }
