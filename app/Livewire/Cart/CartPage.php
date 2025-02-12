@@ -12,13 +12,8 @@ class CartPage extends Component
 
     // Public properties available to the component and view
     public $shoppingCart;       // Holds the current shopping cart model instance
-    public $cartItems = [];     // An array of cart items for the shopping cart
-    public $cartItemsCount = 0; // The total number of items in the cart
-    public $subtotal = 0;       // The total cost of items in the cart (calculated as the sum of unit_price * quantity)
-    public $minSubtotal = 4000; // The minimum subtotal required for free shipping
-    public $shippingPrice = ''; //
-
-    public $wrapStatus = true;
+    public $shippingPrice = ''; // String that can be either 'Free' or '$500.00'
+    public $wrapStatus = true;  //
 
     // 
     protected $listeners = [
@@ -64,15 +59,8 @@ class CartPage extends Component
     public function refreshCart()
     {
         $this->refreshCartLogic();
-        $this->dispatch('cart-updated', [
-            'cartItemsCount' => $this->cartItemsCount
-        ]);
-        // Calculating shipping price
-        if ($this->subtotal > $this->minSubtotal) {
-            $this->shippingPrice = 'Free';
-        } else {
-            $this->shippingPrice = '$500';
-        }
+        $this->dispatch('cart-updated', [ 'cartItemsCount' => $this->cartItemsCount ]);
+        $this->refreshShippingPrice();
     }
 
     public function render()

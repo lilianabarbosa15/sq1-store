@@ -22,6 +22,7 @@ export default {
                     950: '#323334',
                 },
                 gray: { 
+                    25: '#F5F5F5',
                     50: '#F3F3F3',
                     100: '#F1F1F1',
                     150: '#DEDEDE',

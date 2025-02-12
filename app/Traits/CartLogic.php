@@ -8,7 +8,12 @@ trait CartLogic
 {
     // Private property for the extra cost added when wrapping is selected
     private $wrap_price = 10;
+    public $minSubtotal = 4000; // The minimum subtotal required for free shipping
+    public $subtotal = 0;       // The total cost of items in the cart
 
+    public $cartItems = [];     // An array of cart items for the shopping cart
+
+    
     /**
      * Refresh the cart data.
      * Retrieves the current cart items, calculates the item count and subtotal.
@@ -31,6 +36,22 @@ trait CartLogic
         }
         
     }
+
+    /**
+     * 
+     */
+    public function refreshShippingPrice()
+    {
+        // Calculating shipping price
+        if ($this->subtotal > $this->minSubtotal) {
+            $this->shippingPrice = 'Free';
+            $this->total = $this->subtotal;
+        } else {
+            $this->shippingPrice = '$500.00';
+            $this->total = $this->subtotal + 500;
+        }
+    }
+
 
     /**
      * Handle the wrapping option.

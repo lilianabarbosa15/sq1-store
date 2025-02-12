@@ -12,12 +12,8 @@ class MiniCart extends Component
 
     // Public properties available to the component and view
     public $shoppingCart;       // Holds the current shopping cart model instance
-    public $cartItems = [];     // An array of cart items for the shopping cart
     public $cartItemsCount = 0; // The total number of items in the cart
-    public $subtotal = 0;       // The total cost of items in the cart (calculated as the sum of unit_price * quantity)
-    public $minSubtotal = 4000; // The minimum subtotal required for free shipping
-
-    public $wrapStatus = true;
+    public $wrapStatus = true;  //
 
     //
     protected $listeners = [
@@ -65,9 +61,7 @@ class MiniCart extends Component
     public function refreshCart()
     {
         $this->refreshCartLogic();
-        $this->dispatch('cart-updated', [
-            'cartItemsCount' => $this->cartItemsCount
-        ]);
+        $this->dispatch('cart-updated', [ 'cartItemsCount' => $this->cartItemsCount ]);
     }
 
     /**
