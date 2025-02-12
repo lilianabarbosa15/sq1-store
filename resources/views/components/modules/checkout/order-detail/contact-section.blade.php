@@ -13,7 +13,7 @@
     </div>
     <!-- Email Input -->
     <x-global.forms.input 
-        class="no-clear form-background px-[23px] py-[clamp(12px,2.5vw,23px)] block rounded-none w-full text-[16px] border-gray-400 focus:border-primary-400 text-gray-400 bg-neutral-100"
+        class="px-[23px] py-[clamp(12px,2.5vw,23px)]"
         id="email"
         name="email"
         required

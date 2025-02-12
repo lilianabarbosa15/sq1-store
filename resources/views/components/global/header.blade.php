@@ -3,9 +3,12 @@
         <div class="flex justify-between items-center gap-4 py-4 md:pt-12 box-border">
             <div class="flex items-end gap-4">
                 <button x-on:click="$dispatch('open-modal', 'mobile-nav')"
-                    class="group hover:border-gray-900 border rounded p-2 box-border hover:bg-neutral-100 transition-all duration-200 md:hidden">
-                    <x-global.svg.bars3 class="size-6 text-neutral-500 group-hover:text-grey-900 transition-all duration-200" />
+                    class="inline-flex items-center justify-center hover:text-primary-500 hover:bg-gray-100 p-2 rounded-md text-gray-400 transition duration-150 ease-in-out md:hidden">
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
+
                 <a href="{{route('home')}}">
                     <span class="sr-only">{{config('app.name')}}</span>
                     <img src="{{asset('images/sq1-logo.svg')}}" alt="{{config('app.name')}}" width="120" height="37" />
@@ -13,7 +16,9 @@
             </div>
             <div class="w-fit md:flex justify-end items-center gap-5 hidden">
                 <x-global.buttons.search />
-                <x-global.links.user-nav-link />
+                <a href="{{route('profile')}}">
+                    <x-global.buttons.user-nav />
+                </a>
                 <x-global.buttons.shopping-cart />
             </div>
         </div>
@@ -30,11 +35,13 @@
 
     <template x-teleport="#aside-modal" x-show="isOpen">
         <x-global.modals.modal name="mobile-nav" :maxWidth="null" :fullscreen="true">
-            <x-global.modals.card-modal class="w-screen min-h-screen rounded-none pt-0 px-0 sm:p-0 flex flex-col" x-effect="window.addEventListener('resize', () => { if (window.innerWidth > 768) $dispatch('close-modal', 'mobile-nav') })">
+            <x-global.modals.modal-card class="w-screen min-h-screen rounded-none pt-0 px-0 sm:p-0 flex flex-col" x-effect="window.addEventListener('resize', () => { if (window.innerWidth > 768) $dispatch('close-modal', 'mobile-nav') })">
                 <div class="flex items-end gap-4 border-b py-5 px-4">
                     <button x-on:click="$dispatch('close-modal', 'mobile-nav')"
-                            class="group hover:border-gray-900 border rounded p-2 box-border hover:bg-neutral-100 transition-all duration-200">
-                        <x-global.svg.x-mark class="size-6 text-neutral-500 group-hover:text-gray-900 transition-all duration-200" />
+                            class="inline-flex items-center justify-center hover:text-primary-500 hover:bg-gray-100 p-2 rounded-md text-gray-400 transition duration-150 ease-in-out">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
                     <a href="{{route('home')}}">
                         <span class="sr-only">{{config('app.name')}}</span>

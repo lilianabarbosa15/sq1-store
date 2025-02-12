@@ -1,17 +1,20 @@
 <div {{$attributes}} x-cloak x-data="{ open: false }" @keydown.escape="open = false" class="relative flex">
-    <button x-on:click="open = !open" type="button" x-show="!open" class="group hover:border-gray-900 border border-transparent rounded p-1.5 box-border hover:bg-neutral-100 transition-all">
-        <x-global.svg.search class="min-size-6 text-gray-900 hover:text-primary-600" />
+    <button x-on:click="open = !open" type="button" x-show="!open" 
+            class="inline-flex items-center justify-center hover:text-primary-600 
+            hover:bg-gray-100 p-2 rounded-md text-black transition duration-150 ease-in-out">
+        <x-global.svg.search class="min-size-6" />
     </button>
 
     <div x-cloak class="flex items-end gap-2 overflow-hidden transition-all duration-200" x-bind:class="{ 'w-auto': open, 'w-0': !open }">
-        <button x-show="open" x-transition x-on:click="open = false" type="button" class="size-9 group hover:border-primary-400 border border-transparent rounded px-1.5 box-border hover:bg-neutral-100 transition-all">
-            <x-global.svg.x-mark class="size-5 text-gray-900 group-hover:text-primary-600 m-auto" />
+        <button x-show="open" x-transition x-on:click="open = false" type="button" 
+                class="inline-flex items-center justify-center hover:text-primary-600 
+                hover:bg-gray-100 p-2 rounded text-gray-900 transition duration-150 ease-in-out">
+            <x-global.svg.x-mark class="size-5" />
         </button>
         <form>
             <div>
                 <x-global.forms.input-label for="search" class="sr-only">{{__('Search')}}</x-global.forms.input-label>
-                <x-global.forms.input 
-                    class="no-clear form-background focus:border-primary-400 block mt-1 w-full text-gray-900 bg-neutral-100"
+                <x-global.forms.input
                     id="search"
                     type="search"
                     name="search"

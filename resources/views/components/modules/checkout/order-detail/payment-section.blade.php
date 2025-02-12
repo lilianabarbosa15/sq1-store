@@ -10,7 +10,7 @@
         <!-- Card Number Input with a Secure Lock Icon -->
         <div class="col-start-1 col-end-3 flex items-center relative">
             <x-global.forms.input 
-                class="no-clear form-background pl-[23px] pr-[55px] py-[clamp(12px,2.5vw,23px)] block rounded w-full text-[16px] border-gray-400 focus:border-primary-400 text-gray-400 bg-neutral-100"
+                class="pl-[23px] pr-[55px] py-[clamp(12px,2.5vw,23px)]"
                 id="number" name="number" required autofocus placeholder="{{ __('Card Number') }}" />
             <div class="absolute right-6 flex justify-center items-center text-gray-400">
                 <x-global.svg.secure-lock class="z-1" />
@@ -28,7 +28,7 @@
                   'class' => 'col-start-1 col-end-3' ],
             ];
             
-            $defaultClass = 'no-clear form-background px-[23px] py-[clamp(12px,2.5vw,23px)] block rounded w-full text-[16px] border-gray-400 focus:border-primary-400 text-gray-400 bg-neutral-100';
+            $defaultClass = 'px-[23px] py-[clamp(12px,2.5vw,23px)]';
         @endphp
 
         @foreach ($paymentInputs as $input)

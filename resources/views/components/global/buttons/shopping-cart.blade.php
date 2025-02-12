@@ -6,7 +6,7 @@
         Alpine.store('cartData', { cartItemsCount: 0 });
     });
 
-    // Listen for the custom event 'cart-updated' (dispatched by the Livewire component)
+    // Listen for the custom event 'cart-updated'
     // and update the Alpine store with the new cartItemsCount.
     window.addEventListener('cart-updated', event => {
         if (event.detail && typeof event.detail.cartItemsCount !== 'undefined') {

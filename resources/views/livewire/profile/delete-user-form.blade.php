@@ -34,12 +34,11 @@ new class extends Component
         </p>
     </header>
 
-    <x-global.buttons.danger
-        x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-global.buttons.danger>
+    <x-global.buttons.danger x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')" >
+        {{ __('Delete Account') }}
+    </x-global.buttons.danger>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
+    <x-global.modals.modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
         <form wire:submit="deleteUser" class="p-6">
 
             <h2 class="text-lg font-medium text-gray-900">
@@ -75,5 +74,5 @@ new class extends Component
                 </x-global.buttons.danger>
             </div>
         </form>
-    </x-modal>
+    </x-global.modals.modal>
 </section>

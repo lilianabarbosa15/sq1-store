@@ -8,7 +8,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Livewire\Volt\Volt;
 
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', HomeController::class)
+    ->name('home');
+
+
+
+
 
 //products
 Route::prefix('product')->group( function () {
@@ -18,10 +23,12 @@ Route::prefix('product')->group( function () {
 });
 
 //cart
-Route::get('/cart', CartController::class)->name('cart');
+Route::get('/cart', CartController::class)
+    ->name('cart');
 
 //checkout
-Route::get('/checkout', CheckoutController::class)->name('checkout');
+Route::get('/checkout', CheckoutController::class)
+    ->name('checkout');
 
 
 
@@ -47,8 +54,16 @@ Route::prefix('cart')->middleware('auth:sanctum')->group( function () {
 
 /////////////////
 
-Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::view('profile', 'profile')->middleware(['auth'])->name('profile');           ///????///////////
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+Route::view('orders', 'orders')
+    ->middleware(['auth'])
+    ->name('orders');
 
 require __DIR__.'/auth.php';
