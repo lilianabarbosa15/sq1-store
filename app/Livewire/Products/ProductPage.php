@@ -34,19 +34,8 @@ class ProductPage extends Component
         $this->defaultSize = $this->sizes[0];
         $this->stockData = json_encode($this->selectedVariant->quantity, JSON_UNESCAPED_UNICODE);
 
-        // Check if the user is authenticated
-        if (auth()->check()) {
-            // For authenticated users, fetch or create the active shopping cart
-            $this->shoppingCart = ShoppingCart::firstOrCreate([
-                'user_id' => auth()->id(),
-                'status'  => 'active',
-            ]);
-        } else {
-            // For guests, create a new shopping cart with 'active' status
-            $this->shoppingCart = ShoppingCart::create([
-                'status' => 'active',
-            ]);
-        }
+        // Shopping cart shared by the View
+        $this->shoppingCart = \App\Models\ShoppingCart::getOrCreateForCurrentUser(); //dump($this->shoppingCart->id);
     }
 
     public function selectVariant(int $id)

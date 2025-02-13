@@ -27,17 +27,8 @@ class CheckoutPage extends Component
      */
     public function mount()
     {
-        // Initialize the shopping cart
-        if (auth()->check()) {
-            $this->shoppingCart = ShoppingCart::firstOrCreate([
-                'user_id' => auth()->id(),
-                'status'  => 'active',
-            ]);
-        } else {
-            $this->shoppingCart = ShoppingCart::create([
-                'status' => 'active',
-            ]);
-        }
+        // Shopping cart shared by the View
+        $this->shoppingCart = \App\Models\ShoppingCart::getOrCreateForCurrentUser(); //dump($this->shoppingCart->id);
         //
         $this->refreshCart();
     }

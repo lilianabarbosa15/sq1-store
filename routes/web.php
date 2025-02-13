@@ -11,35 +11,9 @@ use Livewire\Volt\Volt;
 Route::get('/', HomeController::class)
     ->name('home');
 
-
-
-
-
-//products
-Route::prefix('product')->group( function () {
-    //Route::get('/search', [ProductController::class, 'search']);
-    //Route::get('/', [ProductController::class, 'index']);       //
-    Route::get('/{id}', [ProductController::class, 'show'])->name('show');   
-});
-
-//cart
-Route::get('/cart', CartController::class)
-    ->name('cart');
-
 //checkout
 Route::get('/checkout', CheckoutController::class)
     ->name('checkout');
-
-
-
-/*
-Route::middleware('guest')->group(function () {
-    Volt::route('register', 'pages.auth.register')
-        ->name('register');
-
-    Volt::route('login', 'pages.auth.login')
-        ->name('login');
-});*/
 
 
 //shopping cart
@@ -58,10 +32,23 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+//authentication
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+//shopping cart
+Route::get('/cart', CartController::class)
+    ->name('cart');
+
+//products
+Route::prefix('product')->group( function () {
+    //Route::get('/search', [ProductController::class, 'search']);
+    //Route::get('/', [ProductController::class, 'index']);       //
+    Route::get('/{id}', [ProductController::class, 'show'])->name('show');   
+});
+
+//orders
 Route::view('orders', 'orders')
     ->middleware(['auth'])
     ->name('orders');

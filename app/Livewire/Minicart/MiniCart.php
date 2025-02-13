@@ -3,7 +3,6 @@
 namespace App\Livewire\Minicart;
 
 use Livewire\Component;
-use App\Models\ShoppingCart;
 use App\Traits\CartLogic;  // Import the trait
 
 class MiniCart extends Component
@@ -28,17 +27,8 @@ class MiniCart extends Component
      */
     public function mount()
     {
-        // Initialize the shopping cart
-        if (auth()->check()) {
-            $this->shoppingCart = ShoppingCart::firstOrCreate([
-                'user_id' => auth()->id(),
-                'status'  => 'active',
-            ]);
-        } else {
-            $this->shoppingCart = ShoppingCart::create([
-                'status' => 'active',
-            ]);
-        }
+        // Shopping cart shared by the View
+        $this->shoppingCart = \App\Models\ShoppingCart::getOrCreateForCurrentUser(); //dump($this->shoppingCart->id);
         //
         $this->wrapStatus = $this->shoppingCart->wrap;
         //

@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\ColorService;
+
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,10 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //Traduction of the colors selected in each product.
-        $this->app->singleton(ColorService::class, function ($app) {
-            return new ColorService();
-        });
+        //
     }
 
     /**
@@ -24,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        View::composer('*', function ($view) {
+            $shoppingCart = \App\Models\ShoppingCart::getOrCreateForCurrentUser();
+            $view->with('shoppingCart', $shoppingCart);
+        });
     }
 
 
