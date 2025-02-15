@@ -1,4 +1,4 @@
-<header x-data="{ isOpen: false }">
+<header x-data="{ isOpen: false }" class="font-roboto">
     <div class="wrapper border-b md:border-b-0">
         <div class="flex justify-between items-center gap-4 py-4 md:pt-12 box-border">
             <div class="flex items-end gap-4">

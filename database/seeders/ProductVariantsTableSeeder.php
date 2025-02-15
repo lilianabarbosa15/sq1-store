@@ -13,6 +13,6 @@ class ProductVariantsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        ProductVariant::factory(200)->create();
+        ProductVariant::factory(105)->create();
     }
 }

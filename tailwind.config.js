@@ -46,8 +46,10 @@ export default {
                 'xs': '375px',
                 '2xs': '427px',
                 'sm': '500px',
+                '2sm': '670px',
                 'md': '768px',
                 '2md': '860px',
+                'l': '1060px',
                 'xl': '1280px',
                 '2xl': '1536px',
             },
@@ -69,6 +71,7 @@ export default {
                 roboto: ['Roboto', 'sans-serif'],   //
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans], //
                 volkhov: ['Volkhov', 'serif'],
+                jost: ['Jost', 'sans-serif'],
             },
         },
     },

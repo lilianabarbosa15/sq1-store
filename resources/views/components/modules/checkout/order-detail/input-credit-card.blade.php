@@ -28,7 +28,7 @@
                 style="width: 43px; height:25px; object-fit: cover;"
                 :style="{ objectPosition: positions[selectedPayment] }"
                 alt="The image shows various payment logos including Visa, Mastercard, Amex, JCB, Discover, Diners Club, and UnionPay.">
-            <x-global.svg.caret-down-mark />
+            <x-global.svg.caret-updown-mark />
         </div>
 
         <div x-show="open" @click.away="open = false" class="z-10 absolute right-0 mt-10 bg-white border rounded shadow p-2">

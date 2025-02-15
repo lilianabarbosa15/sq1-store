@@ -51,38 +51,44 @@ class ProductPage extends Component
     /*  */
     public function addToCart($quantity, int $variant_id, string $size)
     {
-        // Retrieve all items associated with the current shopping cart
-        $allItems = CartItem::where('shopping_cart_id', $this->shoppingCart->id)->get();
-                
-        // Find the first item that matches the selected variant ID.
-        // You can use firstWhere to return the first matching item.
-        $item = $allItems->firstWhere('product_variant_id', $variant_id);
+        // This verifies the quantity of the variant on stock
+        $quantityStock = json_decode($this->selectedVariant->quantity, true);
 
-        // Check if an item was found AND if the sizes match (after converting to uppercase)
-        if ($item !== null && strtoupper($item->size) === strtoupper($size)) {
-            $item->delete();
+        if ($quantityStock[$size] >= $quantity ) {
+
+            // Retrieve all items associated with the current shopping cart
+            $allItems = CartItem::where('shopping_cart_id', $this->shoppingCart->id)->get();
+                    
+            // Find the first item that matches the selected variant ID.
+            // You can use firstWhere to return the first matching item.
+            $item = $allItems->firstWhere('product_variant_id', $variant_id);
+
+            // Check if an item was found AND if the sizes match (after converting to uppercase)
+            if ($item !== null && strtoupper($item->size) === strtoupper($size)) {
+                $item->delete();
+            }
+            // Determine the unit price
+            if (($this->selectedVariant->sale_price) == null) {
+                // Otherwise, retrieve the regular price from the Product model.
+                // Use $variant->product_id to get the product id.
+                $product_id = $this->selectedVariant->product_id;
+                $unit_price = Product::where('id', $product_id)->value('price');
+            } else {
+                // If there's a sale price, use it.
+                $unit_price = $this->selectedVariant->sale_price;
+            }
+            // Use firstOrCreate to either retrieve an existing cart item or create a new one.
+            // The first array is used as search criteria and the second sets additional attributes if a new record is created.
+            $this->cartItem = CartItem::firstOrCreate(
+                [
+                    'shopping_cart_id'      => $this->shoppingCart->id,
+                    'product_variant_id'    => $variant_id,
+                    'size'          => strtoupper($size),
+                    'quantity'      => $quantity,
+                    'unit_price'    => $unit_price,
+                ]
+            );
         }
-        // Determine the unit price
-        if (($this->selectedVariant->sale_price) == null) {
-            // Otherwise, retrieve the regular price from the Product model.
-            // Use $variant->product_id to get the product id.
-            $product_id = $this->selectedVariant->product_id;
-            $unit_price = Product::where('id', $product_id)->value('price');
-        } else {
-            // If there's a sale price, use it.
-            $unit_price = $this->selectedVariant->sale_price;
-        }
-        // Use firstOrCreate to either retrieve an existing cart item or create a new one.
-        // The first array is used as search criteria and the second sets additional attributes if a new record is created.
-        $this->cartItem = CartItem::firstOrCreate(
-            [
-                'shopping_cart_id'      => $this->shoppingCart->id,
-                'product_variant_id'    => $variant_id,
-                'size'          => strtoupper($size),
-                'quantity'      => $quantity,
-                'unit_price'    => $unit_price,
-            ]
-        );
 
         // Emit an event to refresh the mini-cart
         $this->dispatch('refreshMiniCart');

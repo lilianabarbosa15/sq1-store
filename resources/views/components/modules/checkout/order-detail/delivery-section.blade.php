@@ -5,7 +5,7 @@
     <!-- Grid of Delivery Inputs -->
     <div class="grid grid-cols-2 gap-3">
         <!-- Country / Region Input with Dropdown Icon -->
-        <div class="col-start-1 col-end-3 flex items-center relative">
+        <div class="col-start-1 col-end-3 flex items-center relative" x-data="{ open: false }">
             <x-global.forms.input 
                 class="pl-[23px] pr-[55px] py-[clamp(12px,2.5vw,23px)]"
                 id="country"
@@ -15,8 +15,9 @@
                 placeholder="{{ __('Country / Region') }}"
             />
             <!-- Dropdown caret icon -->
-            <div class="absolute right-6 inset-y-0 min-w-6 flex justify-center items-center hover:text-primary-600 hover:cursor-pointer">
-                <x-global.svg.caret-down-mark class="z-1" />
+            <div class="absolute right-6 inset-y-0 min-w-6 flex justify-center items-center hover:text-primary-600 hover:cursor-pointer"
+                 @click="open = !open" >
+                 <x-global.svg.caret-updown-mark />
             </div>
         </div>
             

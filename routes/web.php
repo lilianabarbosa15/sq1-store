@@ -15,19 +15,7 @@ Route::get('/', HomeController::class)
 Route::get('/checkout', CheckoutController::class)
     ->name('checkout');
 
-
-//shopping cart
-/*
-Route::prefix('cart')->middleware('auth:sanctum')->group( function () {
-        Route::get('/', [ShoppingCartController::class, 'index']);
-        Route::post('/add', [ShoppingCartController::class, 'store']);
-        Route::put('/update/{id}', [ShoppingCartController::class, 'update']);
-        Route::delete('/remove/{id}', [ShoppingCartController::class, 'destroy']);
-    });
-*/
-
-/////////////////
-
+//
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -43,8 +31,8 @@ Route::get('/cart', CartController::class)
 
 //products
 Route::prefix('product')->group( function () {
-    //Route::get('/search', [ProductController::class, 'search']);
-    //Route::get('/', [ProductController::class, 'index']);       //
+    Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+    Route::get('/', [ProductController::class, 'index']);
     Route::get('/{id}', [ProductController::class, 'show'])->name('show');   
 });
 

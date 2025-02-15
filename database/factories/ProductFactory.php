@@ -24,7 +24,7 @@ class ProductFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
-            'brand' => fake()->domainWord(),
+            'brand' => $this->faker->randomElement(['minimog', 'retolie', 'brook', 'learts', 'vagabond', 'abby']),
             'price' => $this->faker->randomFloat(2, 10, 700),
             'description' => $this->faker->paragraph(),
         ];

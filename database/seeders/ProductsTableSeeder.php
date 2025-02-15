@@ -14,7 +14,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::factory(25)->create()->each(function ($product) 
+        Product::factory(35)->create()->each(function ($product) 
         {
             $categories = Category::pluck('id')->toArray();     // 
             
