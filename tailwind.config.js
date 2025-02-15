@@ -49,6 +49,7 @@ export default {
                 '2sm': '670px',
                 'md': '768px',
                 '2md': '860px',
+                '3md': '1024px',
                 'l': '1060px',
                 'xl': '1280px',
                 '2xl': '1536px',

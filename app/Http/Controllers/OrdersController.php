@@ -10,22 +10,10 @@ class OrdersController extends Controller
 {
     public function __invoke()
     {
-
-        /*$orders = Order::where('user_id', auth()->id())->paginate(3)->map(function ($order){
-            $order->formatted_price = $this->formatCurrent($order->price);
-            return $order;
-        });*/
-
-        $orders = Order::with(['order_items'])->where('user_id', auth()->id())->paginate(2);
+        $orders = Order::with(['order_items'])->where('user_id', auth()->id())->paginate(6);
 
         return view('orders', [
             'orders' => $orders
         ]);
-    }
-
-    public function formatCurrent(float $amount)
-    {
-       $formater =  new NumberFormatter(config('app.locale'), NumberFormatter::CURRENCY);
-       return $formater->formatCurrency($amount, 'USD');
     }
 }

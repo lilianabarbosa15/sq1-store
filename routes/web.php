@@ -38,10 +38,6 @@ Route::prefix('product')->group( function () {
 });
 
 //orders
-/*Route::view('orders', 'orders')
-    ->middleware(['auth'])
-    ->name('orders');*/
-
 Route::get('orders', OrdersController::class)
         ->middleware(['auth'])
         ->name('orders');
