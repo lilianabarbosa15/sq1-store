@@ -57,13 +57,6 @@
         {{ __('Prices') }}
     </h2>
     
-    <div>
-        <!-- Display the current price range -->
-        Max and Min: 
-        <span x-text="filters.prices.min"></span>
-        <span x-text="filters.prices.max"></span>
-    </div>
-    
     @php
         $allPrices = ['$0-$50', '$50-$100', '$100-$150', '$150-$200', '$200-$400'];
     @endphp
