@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
             
-            ShoppingCart::factory(rand(1, 3))->create([
+            ShoppingCart::factory(rand(1, 13))->create([
                 'user_id' => $user->id,
                 'status' => $faker->randomElement(['checking_out', 'checked_out', 'abandoned']),
                 'wrap' => $faker->boolean(50),
@@ -40,12 +40,9 @@ class DatabaseSeeder extends Seeder
             ProductsTableSeeder::class,
             ProductVariantsTableSeeder::class,
             
-            //ShoppingCartsTableSeeder::class,
             CartItemsTableSeeder::class,
             
-            //OrdersTableSeeder::class,
-            //OrderItemsTableSeeder::class,
-            
+            OrdersTableSeeder::class,
         ]);
 
     }

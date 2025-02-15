@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrdersController;
 use Livewire\Volt\Volt;
 
 Route::get('/', HomeController::class)
@@ -37,8 +38,13 @@ Route::prefix('product')->group( function () {
 });
 
 //orders
-Route::view('orders', 'orders')
+/*Route::view('orders', 'orders')
     ->middleware(['auth'])
-    ->name('orders');
+    ->name('orders');*/
+
+Route::get('orders', OrdersController::class)
+        ->middleware(['auth'])
+        ->name('orders');
+
 
 require __DIR__.'/auth.php';
