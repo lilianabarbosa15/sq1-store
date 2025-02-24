@@ -28,9 +28,15 @@
             'grid grid-cols-4 gap-3': grid === 4,
             'grid grid-cols-5 gap-3': grid === 5
         }">
-        @foreach($products as $product)
-            <livewire:global.ui.product-card-filter :product="$product" wire:key="product-{{ $product->id }}" />
-        @endforeach
+        @if($products->isNotEmpty())
+            @foreach($products as $product)
+                <livewire:global.ui.product-card-filter :product="$product" wire:key="product-{{ $product->id }}" />
+            @endforeach
+        @else
+            <div class="flex items-center justify-center w-full h-36 col-span-full">
+                <p class="text-gray-500 text-[clamp(12px,3.5vw,16px)]">{{ __('No products found.') }}</p>
+            </div>
+        @endif
     </div>
         
     <!-- Pagination (always at the bottom) -->
