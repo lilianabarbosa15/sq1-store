@@ -52,7 +52,7 @@
     <aside class="flex items-center justify-self-start gap-4 pt-5 w-full">
         <input type="checkbox"
             x-model="" 
-            @change="$wire.call('wrapCart', )"
+            @change=""
             class="w-6 h-6 border-[3px] border-black bg-white 
                     checked:bg-gray-400 checked:border-gray-400 focus:outline-none focus:ring-0 active:bg-gray-400">
         <label class="text-gray-400">
