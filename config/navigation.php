@@ -3,19 +3,19 @@
 return [
     [
         'title' => 'women',
-        'route' => ''
+        'route' => 'product'
     ],
     [
         'title' => 'men',
-        'route' => ''
+        'route' => 'product'
     ],
     [
         'title' => 'kids',
-        'route' => ''
+        'route' => 'product'
     ],
     [
         'title' => 'accessories',
-        'route' => ''
+        'route' => 'product'
     ],
     [
         'title' => 'about us',

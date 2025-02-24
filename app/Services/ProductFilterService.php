@@ -9,7 +9,7 @@ class ProductFilterService
 {
     protected $perPage;
 
-    public function __construct($perPage = 10)
+    public function __construct($perPage = 9)
     {
         $this->perPage = $perPage;
     }
@@ -103,10 +103,11 @@ class ProductFilterService
         * If a name filter is provided, search for products where the slug contains the given value.
         */
         if (!empty($filters['name'])) {
-            $query->where('slug', 'like', '%' . $filters['name'] . '%');
+            $slug_name = strtolower(preg_replace('/\s+/', '-', $filters['name']));
+            $query->where('slug', 'like', '%' . $slug_name . '%');
         }
 
-        
+
         /*
         * Filter by prices:
         * If both minimum and maximum prices are set, apply one of three cases:

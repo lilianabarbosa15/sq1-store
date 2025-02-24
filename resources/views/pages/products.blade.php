@@ -38,6 +38,7 @@ function filtersComponent() {
             colors: [],
             prices: { min: null, max: null },
             brand: '',
+            name: '',
             collection: '',
         },
         // Timeout ID for debouncing the search function.
@@ -84,6 +85,10 @@ function filtersComponent() {
             if (this.filters.brand) {
                 query.append('filters[brand]', this.filters.brand);
             }
+            // Add name filter.
+            if (this.filters.name) {
+                query.append('filters[name]', this.filters.name);
+            }
             // Add collection filter.
             if (this.filters.collection) {
                 query.append('filters[collection]', this.filters.collection);
@@ -112,6 +117,9 @@ function filtersComponent() {
         // Initializes filters from the local storage.
         init() {
             this.restoreFilters();
+            if (this.filters.name) {
+                this.search();      // Perform search if there is a name filter.
+            }
         },
         
         // Clears all filter options and triggers a search.
@@ -121,6 +129,7 @@ function filtersComponent() {
             this.filters.colors = [];
             this.filters.sizes = [];
             this.filters.brand = '';
+            this.filters.name = '';
             this.filters.collection = '';
             this.saveFilters();
             this.search(); // Update search after clearing filters.
