@@ -23,7 +23,7 @@ class ProductFactory extends Factory
 
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
+            'slug' => Str::slug($name). '-' . $this->faker->unique()->numberBetween(1000, 9999),
             'brand' => $this->faker->randomElement(['minimog', 'retolie', 'brook', 'learts', 'vagabond', 'abby']),
             'price' => $this->faker->randomFloat(2, 10, 700),
             'description' => $this->faker->paragraph(),
